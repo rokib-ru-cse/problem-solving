@@ -47,7 +47,8 @@ public class ReplaceChar {
         for (int i = 0; i < s.length(); i++) {
             if (ch == s.charAt(i)) {
                 cnt++;
-                sb.setCharAt(i, (char)cnt);
+                char a = (char)(cnt+'0');
+                sb.setCharAt(i, a);
             }
         }
         return sb.toString();

@@ -44,6 +44,12 @@ public class ReplaceChar {
         StringBuilder sb = new StringBuilder(s);
         int cnt = 0;
         char ch = 'a';
+
+        if(s.indexOf('a')==-1){
+            // System.out.println("return from if");
+            return s;
+        }
+
         for (int i = 0; i < s.length(); i++) {
             if (ch == s.charAt(i)) {
                 cnt++;
@@ -58,6 +64,6 @@ public class ReplaceChar {
         System.out.println(new ReplaceChar().replaceChar("aadddccc"));
         System.out.println(new ReplaceChar().replaceCharByFilter("aadddccc"));
         System.out.println(new ReplaceChar().replaceCharByCodePointCount("aadddccc"));
-        System.out.println(new ReplaceChar().replaceSpecificChar("aadddccc"));
+        System.out.println(new ReplaceChar().replaceSpecificChar("dddccc"));
     }
 }

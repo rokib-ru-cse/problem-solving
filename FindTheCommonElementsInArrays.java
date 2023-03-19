@@ -3,6 +3,7 @@ import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 /**
  * FindTheCommonElementsInArrays
@@ -55,6 +56,24 @@ public class FindTheCommonElementsInArrays {
         Arrays.sort(intRes);
         return intRes;
     }
+
+    public int[] findTheCommonElementsInArraysByLooping(int[] arr1,int[] arr2){
+        
+        Map<Integer,Integer> map = new LinkedHashMap<>();
+        List<Integer> res = new ArrayList<>();
+        
+        for (int i : arr1) {
+            int cnt = (int)Arrays.stream(arr2).filter(c->c==i).count();
+            if(cnt>0){
+                
+            }
+        }
+
+        int[] intRes = res.stream().mapToInt(c->c).toArray();
+        Arrays.sort(intRes);
+        return intRes;
+    }
+
     public static void main(String[] args){
         for (int a : new FindTheCommonElementsInArrays().findTheCommonElementsInArrays(new int[]{1, 2, 3,3, 5, 6, 7}, new int[]{3,3, 6, 7, 8, 20})) {
             System.out.print(a+" ");

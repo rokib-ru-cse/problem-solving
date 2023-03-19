@@ -58,17 +58,18 @@ public class FindTheCommonElementsInArrays {
     }
 
     public int[] findTheCommonElementsInArraysByLooping(int[] arr1,int[] arr2){
-        
-        Map<Integer,Integer> map = new LinkedHashMap<>();
+        int i=0;
+        int j=0;
         List<Integer> res = new ArrayList<>();
-        
-        for (int i : arr1) {
-            int cnt = (int)Arrays.stream(arr2).filter(c->c==i).count();
-            if(cnt>0){
-                
+        while(i< arr1.length && j<arr2.length){
+            if(arr1[i]==arr2[j]){
+                res.add(arr1[i]);
+            }else if(arr1[i]<arr2[j]){
+                i++;
+            }else{
+                j++;
             }
         }
-
         int[] intRes = res.stream().mapToInt(c->c).toArray();
         Arrays.sort(intRes);
         return intRes;
@@ -80,6 +81,10 @@ public class FindTheCommonElementsInArrays {
         }
         System.out.println();
         for (int a : new FindTheCommonElementsInArrays().findTheCommonElementsInArraysByLinkHashMap(new int[]{1, 2, 3,3, 5, 6, 7}, new int[]{3,3, 6, 7, 8, 20})) {
+            System.out.print(a+" ");
+        }
+        System.out.println();
+        for (int a : new FindTheCommonElementsInArrays().findTheCommonElementsInArraysByLooping(new int[]{1, 2, 3,3, 5, 6, 7}, new int[]{3,3, 6, 7, 8, 20})) {
             System.out.print(a+" ");
         }
         System.out.println();

@@ -10,9 +10,14 @@ public class MaximumSubarraySum {
          return 6
         
         */
-        int sum=0;
+        int previousSum=0;
+        int postSum=0;
+        int lastIndex = 0;
         for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr.length; j++) {
+            for (int j = i; j < arr.length; j++) {
+                for (int k=lastIndex; k < j; k++) {
+                    post+=arr[k];
+                }
                 
             }
         }

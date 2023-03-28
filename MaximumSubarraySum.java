@@ -11,19 +11,17 @@ public class MaximumSubarraySum {
         -3+4 = 1
         -1-3 = -4
         */
-        int previousSum=-1111111;
+        int previousSum=arr[0];
         int postSum=arr[0];
         int lastIndex = 0;
         while (lastIndex<arr.length) {
             int k=lastIndex;
             while(true ){
-                if(k<arr.length && postSum+arr[k]>=postSum){
+                if(k<arr.length && postSum+arr[k]>=previousSum){
                     postSum = postSum+arr[k];
                     k++;
                 }else{
-                    if(postSum>=previousSum){
-                        previousSum=postSum;
-                    }
+                    previousSum=postSum;
                     postSum = 0;
                     break;
                 }

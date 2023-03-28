@@ -12,15 +12,20 @@ public class MaximumSubarraySum {
         -1-3 = -4
         */
         int previousSum=arr[0];
-        int postSum=arr[0];
-        int lastIndex = 0;
+        
+        int lastIndex = 1;
+        int max = -1000;
         while (lastIndex<arr.length) {
             int k=lastIndex;
+            int postSum=arr[lastIndex-1];
             while(true ){
-                if(k<arr.length && postSum+arr[k]>=previousSum){
+                if(k<arr.length && postSum+arr[k]>=previousSum   ){
                     postSum = postSum+arr[k];
+                    max = Math.max(postSum, max);
+                    //System.out.println("previous "+previousSum+" postsum "+postSum+" lastIndex "+lastIndex+" k "+k);
                     k++;
                 }else{
+                    //System.out.println("previous "+previousSum+" postsum "+postSum+" lastIndex "+lastIndex+" k "+k);
                     previousSum=postSum;
                     postSum = 0;
                     break;
@@ -29,7 +34,7 @@ public class MaximumSubarraySum {
             lastIndex++;
             
         }
-        return previousSum;
+        return max;
     }
 
 

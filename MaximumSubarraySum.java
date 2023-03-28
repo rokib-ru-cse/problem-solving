@@ -26,7 +26,7 @@ public class MaximumSubarraySum {
                     k++;
                 }else{
                     //System.out.println("previous "+previousSum+" postsum "+postSum+" lastIndex "+lastIndex+" k "+k);
-                    previousSum=postSum;
+                    previousSum=max;
                     postSum = 0;
                     break;
                 }

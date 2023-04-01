@@ -40,7 +40,6 @@ public class DeleteMiddleOfLinkedList {
            System.out.print(n.value+"->");
            n=n.next;
        }
-        System.out.println();
     }
 
 

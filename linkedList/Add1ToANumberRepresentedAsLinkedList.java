@@ -12,17 +12,20 @@ public class Add1ToANumberRepresentedAsLinkedList {
         if(root==null){
             return ;
         }
-        //currentNumber = root.value;
+        currentNumber = root.value;
 
-        backTrack(root.next,root.value,previousNumber);
-        root.value = (currentNumber+previousNumber)>9?(currentNumber+previousNumber)%10: currentNumber+previousNumber;
-        if(currentNumber+previousNumber>9){
+        backTrack(root.next,currentNumber,previousNumber);
+        int rootValue = (currentNumber+previousNumber)>9?(currentNumber+previousNumber)%10: currentNumber+previousNumber;
+        if((currentNumber+previousNumber)>9){
             previousNumber = 1;
+        }else{
+            previousNumber = 0;
         }
+        root.value = rootValue;
     }
 
     public static void main(String[] args) {
-        Node one = new Node(1);
+        Node one = new Node(9);
         Node two = new Node(9);
         Node three = new Node(9);
         Node four = new Node(9);

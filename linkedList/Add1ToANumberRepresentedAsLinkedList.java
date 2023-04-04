@@ -35,7 +35,6 @@ public class Add1ToANumberRepresentedAsLinkedList {
         two.next = three;
         three.next = four;
 
-
         Node n = Add1ToANumberRepresentedAsLinkedList(one);
         while (n != null) {
             System.out.print(n.value + "->");

@@ -7,9 +7,11 @@ static int maximumSubarraySum(int[] arr){
 
     int lastMax=Integer.MIN_VALUE;
     int i=0;
-    while (lastIndex<arr.length && i<arr.length) {
-        currentSum+=arr[i++];
-        if(currentSum>=lastSum){
+    while (lastIndex<arr.length) {
+        if(i<arr.length){
+            currentSum+=arr[i++];
+        }
+        if(currentSum>=lastMax || currentSum>=lastSum){
             lastSum=currentSum;
         }else{
             lastMax = lastSum;

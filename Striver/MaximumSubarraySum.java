@@ -1,22 +1,25 @@
 public class MaximumSubarraySum{
 
 static int maximumSubarraySum(int[] arr){
-    int sum=0;
     int lastSum=Integer.MIN_VALUE;
+    int currentSum=0;
     int lastIndex=0;
 
-    int max=Integer.MIN_VALUE;
+    int lastMax=Integer.MIN_VALUE;
     int i=0;
-    while (lastIndex<arr.length) {
-        sum+=arr[i++];
-        if(sum>=lastSum){
-            lastSum=sum;
+    while (lastIndex<arr.length && i<arr.length) {
+        currentSum+=arr[i++];
+        if(currentSum>=lastSum){
+            lastSum=currentSum;
         }else{
+            lastMax = lastSum;
+            lastSum = 0;
+            currentSum=0;
             lastIndex++;
             i=lastIndex;
         }
     }
-    return lastSum;
+    return lastMax;
 }
 
     public static void main(String[] args) {

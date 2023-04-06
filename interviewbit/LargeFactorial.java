@@ -6,7 +6,7 @@ public class LargeFactorial {
         String result="0";
         String res= "";
         for (int j = 1; j <= A; j++) {
-            String fact =  fact(i,j);
+            String fact =  fact(result,j);
             int carry=0;
             int i=result.length()-1,k=fact.length()-1;
             int a,b;
@@ -43,7 +43,7 @@ public class LargeFactorial {
         for (int k = 1; k <= j; k++) {
             
         }
-        return sum;
+        return String.valueOf(sum);
     }
     public static void main(String[] args) {
         System.out.println(solve(50));

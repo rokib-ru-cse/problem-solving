@@ -5,16 +5,18 @@ package Array;
  */
 public class SecondSmallestNumberInAnArray {
     public static int secondSmallestNumberInAnArray(int[] arr){
-        int max = Integer.MIN_VALUE;
-        int i=0;
-        while(i<arr.length){
-            if(arr[i]>max){
-                max = arr[i];
+        
+        for (int i = 0; i < arr.length-1; i++) {
+            for (int j = i; j < arr.length; j++) {
+                if(arr[j]<arr[i]){
+                    int temp = arr[j];
+                    arr[j] = arr[i];
+                    arr[i] = temp;
+                }
             }
-            i++;
         }
 
-        return max;
+        return arr[1];
     }
 
     

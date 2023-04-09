@@ -2,11 +2,23 @@ package tree;
 
 public class HeightOfBinaryTree {
     
+    public static int maxDepth(TreeNode root){
+        if(root==null){
+            return 0;
+        }
+        int leftMax = maxDepth(root.leftNode)+1;
+        int rightMax = maxDepth(root.rightNode)+1;
+        if(leftMax>rightMax){
+            return leftMax+1;
+        }else{
+            return rightMax+1;
+        }
+    }
+
     public static void main(String[] args) {
         TreeNode root = new TreeNode(25);
         TreeNode firstNode = new TreeNode(20);
         TreeNode secondNode = new TreeNode(36);
-
 
         TreeNode thirdNode = new TreeNode(10);
         TreeNode fourthNode = new TreeNode(22);
@@ -22,7 +34,7 @@ public class HeightOfBinaryTree {
         
         TreeNode tenthNode = new TreeNode(38);
         TreeNode eleventhNode = new TreeNode(48);
-
+        TreeNode twelvethNode = new TreeNode(4);
 
         root.leftNode = firstNode;
         root.rightNode = secondNode;
@@ -39,5 +51,9 @@ public class HeightOfBinaryTree {
         firstNode.leftNode = ninethNode;
         sixthNode.leftNode = tenthNode;
         sixthNode.rightNode = eleventhNode;
+
+        seventhNode.leftNode = twelvethNode;
+
+        System.out.println(maxDepth(root));
     }
 }

@@ -1,4 +1,4 @@
-public class MaximumSubarraySum{
+public class MaximumSubarraySum1 {
 
 static int maximumSubarraySum(int[] arr){
     int lastSum=Integer.MIN_VALUE;

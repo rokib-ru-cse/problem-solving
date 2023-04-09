@@ -1,13 +1,14 @@
 package tree;
 
 public class HeightOfBinaryTree {
-    
+
+
     public static int maxDepth(TreeNode root){
         if(root==null){
             return 0;
         }
-        int leftMax = maxDepth(root.leftNode)+1;
-        int rightMax = maxDepth(root.rightNode)+1;
+        int leftMax = maxDepth(root.leftNode);
+        int rightMax = maxDepth(root.rightNode);
         if(leftMax>rightMax){
             return leftMax+1;
         }else{
@@ -15,6 +16,18 @@ public class HeightOfBinaryTree {
         }
     }
 
+    public static int maxDepthLoop(TreeNode root){
+        if(root==null){
+            return 0;
+        }
+        int leftMax = maxDepth(root.leftNode);
+        int rightMax = maxDepth(root.rightNode);
+        if(leftMax>rightMax){
+            return leftMax+1;
+        }else{
+            return rightMax+1;
+        }
+    }
     public static void main(String[] args) {
         TreeNode root = new TreeNode(25);
         TreeNode firstNode = new TreeNode(20);
@@ -31,7 +44,7 @@ public class HeightOfBinaryTree {
         TreeNode eighthNode = new TreeNode(12);
 
         TreeNode ninethNode = new TreeNode(28);
-        
+
         TreeNode tenthNode = new TreeNode(38);
         TreeNode eleventhNode = new TreeNode(48);
         TreeNode twelvethNode = new TreeNode(4);
@@ -48,7 +61,7 @@ public class HeightOfBinaryTree {
         thirdNode.leftNode = seventhNode;
         thirdNode.rightNode = eighthNode;
 
-        firstNode.leftNode = ninethNode;
+        fivethNode.leftNode = ninethNode;
         sixthNode.leftNode = tenthNode;
         sixthNode.rightNode = eleventhNode;
 

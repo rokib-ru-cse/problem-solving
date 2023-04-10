@@ -5,6 +5,7 @@ public class StackImpl {
 
     int data;
     StackImpl next;
+    int size;
 
     StackImpl() {
 
@@ -23,7 +24,7 @@ public class StackImpl {
     }
 
     public void add(int data) {
-        size++;
+        this.size++;
         StackImpl newNode = new StackImpl(data);
         if (head == null) {
             head = newNode;
@@ -75,7 +76,9 @@ public class StackImpl {
         return lastNode;
     }
 
-    public static int size = 0;
+    public int size(){
+        return this.size;
+    }
     public static StackImpl head = null;
 
     public static void printStack() {
@@ -101,6 +104,7 @@ public class StackImpl {
         root.add(5);
         root.add(2);
         root.add(1);
+        System.out.println(root.size());
         printStack();
         root.pop();
         printStack();

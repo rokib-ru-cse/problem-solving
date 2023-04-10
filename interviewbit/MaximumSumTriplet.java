@@ -2,10 +2,15 @@ package interviewbit;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class MaximumSumTriplet {
 
     public static int solve(ArrayList<Integer> A) {
+//        int coreCount = Runtime.getRuntime().availableProcessors();
+//        ExecutorService service = Executors.newFixedThreadPool(coreCount);
+//        System.out.println("core "+coreCount);
         int firstPointer = 0;
         int lastPointer = A.size() - 1;
         int midPointer = firstPointer + 1;

@@ -4,12 +4,12 @@ public class Node {
         int value;
         linkedList.Node next;
 
-        Node(){}
-        Node(int data){
+        public Node(){}
+        public Node(int data){
             this.value = data;
             this.next = null;
         }
-        Node(int data, linkedList.Node next){
+       public Node(int data, linkedList.Node next){
             this.value = data;
             this.next = next;
         }

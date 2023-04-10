@@ -13,46 +13,56 @@ public class StackImpl {
     StackImpl(int data) {
         this.data = data;
         this.next = null;
-        //lastPointer++;
+        size++;
     }
 
     StackImpl(int data, StackImpl nextNode) {
         this.data = data;
         this.next = nextNode;
-        //lastPointer++;
+        size++;
     }
 
-    public void add(int data){
+    public void add(int data) {
+        size++;
         StackImpl newNode = new StackImpl(data);
-        if(head==null){
+        if (head == null) {
             head = newNode;
             return;
         }
         StackImpl tempHead = head;
-        while (tempHead.next!=null){
+        while (tempHead.next != null) {
             tempHead = tempHead.next;
         }
         tempHead.next = newNode;
     }
 
-    public StackImpl peek(){
-        if(head==null){
+    public StackImpl peek() {
+        if (head == null) {
             return null;
         }
         StackImpl tempHead = head;
-        while (tempHead.next!=null){
+        while (tempHead.next != null) {
             tempHead = tempHead.next;
         }
         return tempHead;
     }
 
+    public boolean isEmpty() {
+        if (head == null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public StackImpl pop() {
-        if (head==null){
+        size--;
+        if (head == null) {
             System.out.println("Stack is empty");
             return null;
         }
         StackImpl tempHead = head;
-        if(tempHead.next==null){
+        if (tempHead.next == null) {
             StackImpl lastNode = tempHead;
             head = null;
             return lastNode;
@@ -65,11 +75,11 @@ public class StackImpl {
         return lastNode;
     }
 
-    //public static int lastPointer = 0;
+    public static int size = 0;
     public static StackImpl head = null;
 
     public static void printStack() {
-        if(head==null){
+        if (head == null) {
             return;
         }
         StackImpl tempHead = head;
@@ -85,24 +95,28 @@ public class StackImpl {
     }
 
     public static void main(String[] args) {
-        StackImpl root = new StackImpl(10);
-        head = root;
-        root.next = new StackImpl(5);
-        root.next.next = new StackImpl(2);
-        root.next.next.next = new StackImpl(1);
-       // printStack();
+        StackImpl root = new StackImpl();
+        head = root.next;
+        root.add(10);
+        root.add(5);
+        root.add(2);
+        root.add(1);
+        printStack();
         root.pop();
-        //printStack();
+        printStack();
         root.pop();
-        //printStack();
+        printStack();
         root.pop();
-        //printStack();
+        printStack();
         root.pop();
+
+        System.out.println(root.isEmpty());
         root.add(5);
         root.add(10);
         StackImpl pek1 = root.peek();
         System.out.println(pek1.data);
         System.out.println(pek1.next);
+        System.out.println(root.isEmpty());
         printStack();
     }
 }

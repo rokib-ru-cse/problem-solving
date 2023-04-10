@@ -11,8 +11,12 @@ public class MaximumSumTriplet {
         int midPointer = firstPointer + 1;
         int max = Integer.MIN_VALUE;
         boolean shouldLastPointerDecrease = true;
+        //2, 5, 3, 1, 4, 9
         while (firstPointer < lastPointer-1 && midPointer < lastPointer) {
-            max = Math.max(max, A.get(firstPointer) + A.get(midPointer) + A.get(lastPointer));
+            int sum = A.get(firstPointer) + A.get(midPointer) + A.get(lastPointer);
+            if(A.get(firstPointer)<A.get(midPointer) && A.get(midPointer)<A.get(lastPointer) && sum>max){
+                max = sum;
+            }
             midPointer++;
             if (midPointer == lastPointer && shouldLastPointerDecrease) {
                 lastPointer--;
@@ -34,7 +38,7 @@ public class MaximumSumTriplet {
 
     //ans = 88252
     public static void main(String[] args) {
-//        System.out.println(solve(new ArrayList<>(Arrays.asList(18468, 6335, 26501, 19170, 15725, 11479, 29359, 26963, 24465, 5706, 28146, 23282, 16828, 9962, 492, 2996, 11943, 4828, 5437, 32392, 14605))));
-        System.out.println(solve(new ArrayList<>(Arrays.asList(2, 5, 3, 1, 4, 9))));
+        System.out.println(solve(new ArrayList<>(Arrays.asList(18468, 6335, 26501, 19170, 15725, 11479, 29359, 26963, 24465, 5706, 28146, 23282, 16828, 9962, 492, 2996, 11943, 4828, 5437, 32392, 14605))));
+//        System.out.println(solve(new ArrayList<>(Arrays.asList(2, 5, 3, 1, 4, 9))));
     }
 }

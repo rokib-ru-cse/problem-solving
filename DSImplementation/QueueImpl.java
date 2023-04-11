@@ -21,8 +21,8 @@ public class QueueImpl {
     public int getSize() {
         return size;
     }
-    public boolean isEmpty{
-
+    public boolean isEmpty(){
+        return false;
     }
 
     public static void main(String[] args) {

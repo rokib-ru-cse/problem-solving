@@ -4,6 +4,7 @@ public class TreeNode {
     int data;
     TreeNode left;
     TreeNode right;
+    TreeNode parent;
 
     TreeNode() {
 
@@ -11,7 +12,8 @@ public class TreeNode {
 
     TreeNode(int data) {
         this.data = data;
-        this.left = null;
-        this.right = null;
+        left = null;
+        right = null;
+        parent = null;
     }
 }

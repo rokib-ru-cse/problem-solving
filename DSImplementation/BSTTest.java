@@ -1,5 +1,9 @@
 package DSImplementation;
 
+import linkedList.Node;
+
+
+
 public class BSTTest {
 
     TreeNode root;
@@ -30,11 +34,30 @@ public class BSTTest {
         if(node==null){
             return node;
         }
-        if(node.left!=null){
-            return deleteRec(node,data);
+        if(data<node.data){
+            root.left = deleteRec(node.left,data);
+        }else if(data>node.data){
+           root.right =  deleteRec(node.right,data);
         }else{
-            return deleteRec(node,data);
+            if(node.left==null){
+                return node.right;
+            }else if(node.right==null){
+                return node.left;
+            }
+            node.data = minValue(node);
+
+            node.right = deleteRec(node.right,node.data);
         }
+        return node;
+    }
+
+    int minValue(TreeNode node){
+        int minv = node.data;
+        while (node.left!=null){
+            minv = root.left.data;
+            node = node.left;
+        }
+        return minv;
     }
 
     void delete(int key) { root = deleteRec(root, key); }

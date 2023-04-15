@@ -60,8 +60,6 @@ public class MaxHeap {
             newNode.parent.data = newNode.data;
             newNode.data = tempdata;
             heapify(newNode.parent);
-        }else{
-            return;
         }
     }
 

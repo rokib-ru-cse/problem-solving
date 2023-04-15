@@ -3,11 +3,12 @@ package DSImplementation;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class MaxHeapTest {
+public class MinHeapTest {
     HeapNode root;
 
     public static void main(String[] args) {
-        MaxHeapTest tree = new MaxHeapTest();
+        MinHeapTest tree = new MinHeapTest();
+        tree.add(40);
         tree.add(40);
         tree.add(10);
         tree.add(20);
@@ -19,11 +20,11 @@ public class MaxHeapTest {
     }
 
     private void print(HeapNode root) {
-        if (root==null){
+        if (root == null) {
             return;
         }
         print(root.left);
-        System.out.print(root.data+"->");
+        System.out.print(root.data + "->");
         print(root.right);
     }
 
@@ -34,9 +35,9 @@ public class MaxHeapTest {
         }
         HeapNode newNode = new HeapNode(data);
         HeapNode lastParentNode = lastParentNode(root);
-        if (lastParentNode.left==null){
+        if (lastParentNode.left == null) {
             lastParentNode.left = newNode;
-        }else{
+        } else {
             lastParentNode.right = newNode;
         }
         newNode.parent = lastParentNode;
@@ -44,11 +45,12 @@ public class MaxHeapTest {
     }
 
     private void heapify(HeapNode newNode) {
-        if(newNode.parent==null){
+
+        if (newNode.parent == null) {
             return;
         }
-        if(newNode.parent.data<newNode.data){
-            int tempData= newNode.parent.data;
+        if (newNode.parent.data > newNode.data) {
+            int tempData = newNode.parent.data;
             newNode.parent.data = newNode.data;
             newNode.data = tempData;
             heapify(newNode.parent);

@@ -1,6 +1,4 @@
-package DSImplementation;
-
-import com.sun.source.tree.Tree;
+package DataStructuresAndAlgorithmsInJava;
 
 /**
  * BST

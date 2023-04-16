@@ -1,4 +1,4 @@
-package DSImplementation;
+package DataStructuresAndAlgorithmsInJava;
 
 public class TreeNode {
     int data;

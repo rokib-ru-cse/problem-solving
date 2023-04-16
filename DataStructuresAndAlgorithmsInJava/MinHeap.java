@@ -1,14 +1,15 @@
-package DSImplementation;
+package DataStructuresAndAlgorithmsInJava;
+
 
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class MinHeapTest {
+public class MinHeap {
+
     HeapNode root;
 
     public static void main(String[] args) {
-        MinHeapTest tree = new MinHeapTest();
-        tree.add(40);
+        MinHeap tree = new MinHeap();
         tree.add(40);
         tree.add(10);
         tree.add(20);
@@ -17,6 +18,7 @@ public class MinHeapTest {
         tree.add(35);
         tree.add(45);
         tree.print(tree.root);
+
     }
 
     private void print(HeapNode root) {
@@ -45,7 +47,6 @@ public class MinHeapTest {
     }
 
     private void heapify(HeapNode newNode) {
-
         if (newNode.parent == null) {
             return;
         }
@@ -56,6 +57,7 @@ public class MinHeapTest {
             heapify(newNode.parent);
         }
     }
+
 
     private HeapNode lastParentNode(HeapNode root) {
         Queue<HeapNode> allNodes = new LinkedList<>();

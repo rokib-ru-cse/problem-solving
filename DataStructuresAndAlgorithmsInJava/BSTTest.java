@@ -1,7 +1,4 @@
-package DSImplementation;
-
-import linkedList.Node;
-
+package DataStructuresAndAlgorithmsInJava;
 
 
 public class BSTTest {

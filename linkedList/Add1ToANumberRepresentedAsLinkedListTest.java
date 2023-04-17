@@ -8,10 +8,10 @@ public class Add1ToANumberRepresentedAsLinkedListTest {
 
     public static void main(String[] args) {
         Add1ToANumberRepresentedAsLinkedListTest head = new Add1ToANumberRepresentedAsLinkedListTest();
-        head.add(1);
-        head.add(5);
-        head.add(6);
-        head.add(7);
+        head.add(9);
+        head.add(9);
+        head.add(9);
+        head.add(9);
         head.print();
         head.addExtraOne();
         head.print();
@@ -19,20 +19,26 @@ public class Add1ToANumberRepresentedAsLinkedListTest {
     }
 
     private void addExtraOne() {
-        backTrack(head, 1);
+        int extra =  backTrack(head, 0);
+        if(extra>0){
+            SinglyLinkNode newNode = new SinglyLinkNode<>(extra);
+            newNode.setNext(head);
+            head = newNode;
+        }
     }
 
-    private void backTrack(SinglyLinkNode node, int extra) {
+    private int backTrack(SinglyLinkNode node, int extra) {
         if (node == null) {
-            return;
+            return 1;
         }
 
-        backTrack(node.getNext(), extra);
-        //extra = ((int)node.getData()+extra)/10;
-        int sum = ((int) node.getData() + extra);
-        extra = sum >9?1:0;
-        sum = sum>9?0:sum;
-        node.setData(sum);
+        int carry = (int)node.getData() + backTrack(node.getNext(),(int)node.getData());
+        if(carry>9){
+            node.setData(carry%10);
+        }else {
+            node.setData(carry);
+        }
+        return carry/10;
     }
 
     private void print() {

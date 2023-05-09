@@ -1,30 +1,40 @@
 package DataStructuresAndAlgorithmsInJava;
 
-/**
- * BST
- */
 public class BST {
-
     TreeNode root;
 
-    public BST() {
-        this.root = null;
+    public static void main(String[] args) {
+        BST tree = new BST();
+        tree.add(40);
+        tree.add(30);
+        tree.add(20);
+        tree.add(50);
+        tree.add(60);
+        tree.add(55);
+        tree.print(tree.root);
     }
 
-    public BST(int data) {
-        root = new TreeNode(data);
+    private void print(TreeNode root) {
+        if (root==null){
+            return;
+        }
+        print(root.left);
+        System.out.print(root.data+" ");
+        print(root.right);
     }
 
-    public void insert(int data) {
+    private void add(int data) {
+        if (root == null) {
+            root = new TreeNode(data);
+            return;
+        }
         root = insertRec(root, data);
     }
 
-    public TreeNode insertRec(TreeNode root, int data) {
+    private TreeNode insertRec(TreeNode root, int data) {
         if (root == null) {
-            root = new TreeNode(data);
-            return root;
+            return new TreeNode(data);
         }
-
         if (data <= root.data) {
             root.left = insertRec(root.left, data);
         } else {
@@ -32,33 +42,4 @@ public class BST {
         }
         return root;
     }
-    private static void inorderPrint(TreeNode root) {
-        if(root==null){
-            return;
-        }
-        inorderPrint(root.left);
-        System.out.print(root.data+"->");
-        inorderPrint(root.right);
-
-    }
-    public static void main(String[] args) {
-        /*
-        10
-        /
-       8
-       /\
-      7  9
-         */
-
-        BST tree = new BST();
-        tree.insert(10);
-        tree.insert(8);
-        tree.insert(7);
-        tree.insert(9);
-        tree.insert(12);
-        inorderPrint(tree.root);
-        System.out.println();
-    }
-
-
 }

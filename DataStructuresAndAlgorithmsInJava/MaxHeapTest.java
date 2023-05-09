@@ -7,15 +7,15 @@ public class MaxHeapTest {
     HeapNode root;
 
     public static void main(String[] args) {
-        MaxHeapTest tree = new MaxHeapTest();
-        tree.add(40);
-        tree.add(10);
-        tree.add(20);
-        tree.add(30);
-        tree.add(25);
-        tree.add(35);
-        tree.add(45);
-        tree.print(tree.root);
+        MaxHeapTest maxHeap = new MaxHeapTest();
+        maxHeap.add(40);
+        maxHeap.add(10);
+        maxHeap.add(20);
+        maxHeap.add(30);
+        maxHeap.add(25);
+        maxHeap.add(35);
+        maxHeap.add(45);
+        maxHeap.print(maxHeap.root);
     }
 
     private void print(HeapNode root) {
@@ -33,38 +33,38 @@ public class MaxHeapTest {
             return;
         }
         HeapNode newNode = new HeapNode(data);
-        HeapNode lastParentNode = lastParentNode(root);
-        if (lastParentNode.left==null){
-            lastParentNode.left = newNode;
+        HeapNode lastParent = lastParent(root);
+        if(lastParent.left==null){
+            lastParent.left = newNode;
         }else{
-            lastParentNode.right = newNode;
+            lastParent.right = newNode;
         }
-        newNode.parent = lastParentNode;
-        heapify(newNode);
+        newNode.parent = lastParent;
+        upHeapify(newNode);
     }
 
-    private void heapify(HeapNode newNode) {
+    private void upHeapify(HeapNode newNode) {
         if(newNode.parent==null){
             return;
         }
-        if(newNode.parent.data<newNode.data){
-            int tempData= newNode.parent.data;
+        if (newNode.parent.data<newNode.data){
+            int data = newNode.parent.data;
             newNode.parent.data = newNode.data;
-            newNode.data = tempData;
-            heapify(newNode.parent);
+            newNode.data = data;
+            upHeapify(newNode.parent);
         }
     }
 
-    private HeapNode lastParentNode(HeapNode root) {
+    private HeapNode lastParent(HeapNode root) {
         Queue<HeapNode> allNodes = new LinkedList<>();
         allNodes.add(root);
         while (!allNodes.isEmpty()) {
-            HeapNode temp = allNodes.poll();
-            if (temp.left != null && temp.right != null) {
-                allNodes.add(temp.left);
-                allNodes.add(temp.right);
+            HeapNode tempNode = allNodes.poll();
+            if (tempNode.left != null && tempNode.right != null) {
+                allNodes.add(tempNode.left);
+                allNodes.add(tempNode.right);
             } else {
-                return temp;
+                return tempNode;
             }
         }
         return null;

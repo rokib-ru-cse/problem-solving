@@ -1,126 +1,87 @@
 package DataStructuresAndAlgorithmsInJava;
 
+import java.util.LinkedList;
+import java.util.Stack;
 
 public class StackImpl {
 
-    int data;
-    StackImpl next;
-    int size;
+    ListNode head;
+    ListNode tail;
+    int size = 0;
 
-    StackImpl() {
-
-    }
-
-    StackImpl(int data) {
-        this.data = data;
-        this.next = null;
-        size++;
-    }
-
-    StackImpl(int data, StackImpl nextNode) {
-        this.data = data;
-        this.next = nextNode;
-        size++;
-    }
-
-    public void add(int data) {
-        this.size++;
-        StackImpl newNode = new StackImpl(data);
-        if (head == null) {
-            head = newNode;
-            return;
+    public static void main(String[] args) {
+        Stack<Integer> s = new Stack<>();
+        StackImpl stack = new StackImpl();
+        stack.push(10);
+        stack.push(5);
+        stack.push(100);
+        stack.push(200);
+        stack.push(300);
+        stack.push(400);
+        System.out.println("size is "+stack.size);
+        stack.print();
+        ListNode popedNode = stack.pop();
+        if (popedNode != null) {
+            System.out.println(popedNode.data);
         }
-        StackImpl tempHead = head;
-        while (tempHead.next != null) {
-            tempHead = tempHead.next;
+        stack.print();
+        ListNode peekNode = stack.peek();
+        if (peekNode != null) {
+            System.out.println("peek " + peekNode.data);
         }
-        tempHead.next = newNode;
+        System.out.println("size is "+stack.size);
     }
 
-    public StackImpl peek() {
+    private ListNode peek() {
+        return tail;
+    }
+
+    private ListNode pop() {
+        if (size > 0) {
+            size--;
+        }
+        ListNode returnNode = null;
         if (head == null) {
             return null;
         }
-        StackImpl tempHead = head;
-        while (tempHead.next != null) {
-            tempHead = tempHead.next;
-        }
-        return tempHead;
-    }
-
-    public boolean isEmpty() {
-        if (head == null) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public StackImpl pop() {
-        size--;
-        if (head == null) {
-            System.out.println("Stack is empty");
-            return null;
-        }
-        StackImpl tempHead = head;
-        if (tempHead.next == null) {
-            StackImpl lastNode = tempHead;
+        if (head.next == null) {
+            returnNode = head;
             head = null;
-            return lastNode;
+            tail = null;
+            return returnNode;
         }
-        while (tempHead.next.next != null) {
-            tempHead = tempHead.next;
+        ListNode temp = head;
+        while (temp.next.next != null) {
+            temp = temp.next;
         }
-        StackImpl lastNode = tempHead.next;
-        tempHead.next = null;
-        return lastNode;
+        returnNode = temp.next;
+        temp.next = null;
+        tail = temp;
+        return returnNode;
     }
 
-    public int size(){
-        return this.size;
-    }
-    public static StackImpl head = null;
-
-    public static void printStack() {
-        if (head == null) {
-            return;
-        }
-        StackImpl tempHead = head;
-        while (tempHead != null) {
-            if (tempHead.next != null) {
-                System.out.print(tempHead.data + "->");
+    private void print() {
+        ListNode temp = head;
+        while (temp != null) {
+            if (temp.next != null) {
+                System.out.print(temp.data + "->");
             } else {
-                System.out.print(tempHead.data);
+                System.out.print(temp.data);
             }
-            tempHead = tempHead.next;
+            temp = temp.next;
         }
         System.out.println();
     }
 
-    public static void main(String[] args) {
-        StackImpl root = new StackImpl();
-        head = root.next;
-        root.add(10);
-        root.add(5);
-        root.add(2);
-        root.add(1);
-        System.out.println(root.size());
-        printStack();
-        root.pop();
-        printStack();
-        root.pop();
-        printStack();
-        root.pop();
-        printStack();
-        root.pop();
-
-        System.out.println(root.isEmpty());
-        root.add(5);
-        root.add(10);
-        StackImpl pek1 = root.peek();
-        System.out.println(pek1.data);
-        System.out.println(pek1.next);
-        System.out.println(root.isEmpty());
-        printStack();
+    private void push(int data) {
+        size++;
+        if (head == null) {
+            head = new ListNode(data);
+            tail = head;
+            return;
+        }
+        ListNode newNode = new ListNode(data);
+        tail.next = newNode;
+        tail = tail.next;
     }
 }

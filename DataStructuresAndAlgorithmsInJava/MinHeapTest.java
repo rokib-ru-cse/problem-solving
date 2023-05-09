@@ -1,5 +1,6 @@
 package DataStructuresAndAlgorithmsInJava;
 
+import java.awt.*;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -7,25 +8,15 @@ public class MinHeapTest {
     HeapNode root;
 
     public static void main(String[] args) {
-        MinHeapTest tree = new MinHeapTest();
-        tree.add(40);
-        tree.add(40);
-        tree.add(10);
-        tree.add(20);
-        tree.add(30);
-        tree.add(25);
-        tree.add(35);
-        tree.add(45);
-        tree.print(tree.root);
-    }
-
-    private void print(HeapNode root) {
-        if (root == null) {
-            return;
-        }
-        print(root.left);
-        System.out.print(root.data + "->");
-        print(root.right);
+        MinHeapTest minHeap = new MinHeapTest();
+        minHeap.add(40);
+        minHeap.add(10);
+        minHeap.add(20);
+        minHeap.add(30);
+        minHeap.add(25);
+        minHeap.add(35);
+        minHeap.add(45);
+        minHeap.print(minHeap.root);
     }
 
     private void add(int data) {
@@ -34,30 +25,29 @@ public class MinHeapTest {
             return;
         }
         HeapNode newNode = new HeapNode(data);
-        HeapNode lastParentNode = lastParentNode(root);
-        if (lastParentNode.left == null) {
-            lastParentNode.left = newNode;
-        } else {
-            lastParentNode.right = newNode;
+        HeapNode lastParent = lastParent(root);
+        if(lastParent.left==null){
+            lastParent.left = newNode;
+        }else{
+            lastParent.right = newNode;
         }
-        newNode.parent = lastParentNode;
-        heapify(newNode);
+        newNode.parent = lastParent;
+        upHeapify(newNode);
     }
 
-    private void heapify(HeapNode newNode) {
-
-        if (newNode.parent == null) {
+    private void upHeapify(HeapNode newNode) {
+        if (newNode.parent==null){
             return;
         }
-        if (newNode.parent.data > newNode.data) {
-            int tempData = newNode.parent.data;
+        if(newNode.parent.data>newNode.data){
+            int data = newNode.parent.data;
             newNode.parent.data = newNode.data;
-            newNode.data = tempData;
-            heapify(newNode.parent);
+            newNode.data = data;
+            upHeapify(newNode.parent);
         }
     }
 
-    private HeapNode lastParentNode(HeapNode root) {
+    private HeapNode lastParent(HeapNode root) {
         Queue<HeapNode> allNodes = new LinkedList<>();
         allNodes.add(root);
         while (!allNodes.isEmpty()) {
@@ -71,4 +61,14 @@ public class MinHeapTest {
         }
         return null;
     }
+
+    private void print(HeapNode root) {
+        if (root == null) {
+            return;
+        }
+        print(root.left);
+        System.out.print(root.data + "->");
+        print(root.right);
+    }
+
 }

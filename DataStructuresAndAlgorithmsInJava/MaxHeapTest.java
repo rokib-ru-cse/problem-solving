@@ -69,4 +69,37 @@ public class MaxHeapTest {
         }
         return null;
     }
+    public boolean isEmpty(){
+        return root==null;
+    }
+    public HeapNode extractMax(){
+        if(isEmpty()){
+            return null;
+        }
+        HeapNode returnNode = root;
+        HeapNode lastInsertedNode = lastParent(root);
+        if(root==lastInsertedNode){
+            root = null;
+            return returnNode;
+        }
+        swap(root,lastInsertedNode);
+        HeapNode lastNodeParent = lastInsertedNode.parent;
+        if(lastNodeParent.left==lastInsertedNode){
+            lastNodeParent.left = null;
+        }else{
+            lastNodeParent.right = null;
+        }
+        downHeapify(root);
+        return returnNode;
+    }
+
+    private void downHeapify(HeapNode root) {
+
+    }
+
+    public void swap(HeapNode node1,HeapNode node2){
+        int temp = node1.data;
+        node1.data = node2.data;
+        node2.data = temp;
+    }
 }

@@ -1,80 +1,140 @@
 package DataStructuresAndAlgorithmsInJava;
 
 import java.util.LinkedList;
+import java.util.NoSuchElementException;
 import java.util.Queue;
 
 public class MaxHeap {
 
-    HeapNode root;
-    MaxHeap(){
-        root = null;
-    }
-    MaxHeap(int data){
-        root = new HeapNode(data);
-    }
+    private HeapNode root;
+    private int size;
 
-
-    public static void main(String[] args) {
-        MaxHeap tree = new MaxHeap();
-        tree.add(40);
-        tree.add(10);
-        tree.add(20);
-        tree.add(30);
-        tree.add(25);
-        tree.add(35);
-        tree.add(45);
-        tree.print(tree.root);
+    public MaxHeap() {
+        this.root = null;
+        this.size = 0;
     }
 
-    private void print(HeapNode root) {
-        if (root==null){
-            return;
-        }
-        print(root.left);
-        System.out.print(root.data+"->");
-        print(root.right);
-    }
-
-    private void add(int data) {
-        HeapNode newNode = new HeapNode(data);
-        if(root==null){
+    public void insert(int value) {
+        HeapNode newNode = new HeapNode(value);
+        if (root == null) {
             root = newNode;
-            return;
+        } else {
+            HeapNode curr = root;
+            Queue<HeapNode> queue = new LinkedList<>();
+            queue.offer(curr);
+            while (!queue.isEmpty()) {
+                curr = queue.poll();
+                if (curr.left == null) {
+                    curr.left = newNode;
+                    break;
+                } else if (curr.right == null) {
+                    curr.right = newNode;
+                    break;
+                } else {
+                    queue.offer(curr.left);
+                    queue.offer(curr.right);
+                }
+            }
+            // percolate up the newly inserted element
+            percolateUp(newNode);
         }
-        HeapNode lastParent = lastParent(root);
-        if(lastParent.left==null){
-            lastParent.left=newNode;
-        }else{
-            lastParent.right=newNode;
-        }
-        newNode.parent = lastParent;
-        heapify(newNode);
+        size++;
     }
 
-    private void heapify(HeapNode newNode) {
-        if(newNode.parent==null){
-            return;
+    public int getMax() {
+        if (root == null) {
+            throw new NoSuchElementException("Heap is empty");
         }
-        if(newNode.parent.data<newNode.data){
-            int tempdata = newNode.parent.data;
-            newNode.parent.data = newNode.data;
-            newNode.data = tempdata;
-            heapify(newNode.parent);
-        }
+        return root.data;
     }
 
-    private HeapNode lastParent(HeapNode root) {
+    public int extractMax() {
+        if (root == null) {
+            throw new NoSuchElementException("Heap is empty");
+        }
+        int max = root.data;
+        HeapNode lastNode = lastInsertedNode();
+        if (lastNode == root) {
+            root = null;
+        } else {
+            swapValues(root, lastNode);
+            HeapNode parentOfLastNode = lastInsertedNode();
+            if (lastNode == parentOfLastNode.left) {
+                parentOfLastNode.left = null;
+            } else {
+                parentOfLastNode.right = null;
+            }
+            // percolate down the root element
+            percolateDown(root);
+        }
+        size--;
+        return max;
+    }
+    private HeapNode lastInsertedNode() {
         Queue<HeapNode> allNodes = new LinkedList<>();
         allNodes.add(root);
-        while (!allNodes.isEmpty()){
-            HeapNode temp = allNodes.poll();
-            if(temp.left!=null && temp.right!=null){
-                allNodes.add(temp.left);
-                allNodes.add(temp.right);
-            }else{
-                return temp;
+        while (!allNodes.isEmpty()) {
+            HeapNode tempNode = allNodes.poll();
+            if (tempNode.left != null && tempNode.right != null) {
+                allNodes.add(tempNode.left);
+                allNodes.add(tempNode.right);
+            } else {
+                return tempNode;
             }
         }
         return null;
     }
+    private void percolateUp(HeapNode node) {
+        HeapNode parent = getParent(node);
+        while (parent != null && parent.data < node.data) {
+            swapValues(node, parent);
+            node = parent;
+            parent = getParent(node);
+        }
+    }
+
+    private void percolateDown(HeapNode node) {
+        while (node != null && (node.left != null || node.right != null)) {
+            HeapNode leftChild = node.left;
+            HeapNode rightChild = node.right;
+            if (leftChild != null && rightChild != null) {
+                if (leftChild.data > rightChild.data) {
+                    if (node.data < leftChild.data) {
+                        swapValues(node, leftChild);
+                        node = leftChild;
+                    } else {
+                        break;
+                    }
+                } else {
+                    if (node.data < rightChild.data) {
+                        swapValues(node, rightChild);
+                        node = rightChild;
+                    } else {
+                        break;
+                    }
+                }
+            } else if (leftChild != null) {
+                if (node.data < leftChild.data) {
+                    swapValues(node, leftChild);
+                    node = leftChild;
+                } else {
+                    break;
+                }
+            } else {
+                if (node.data < rightChild.data) {
+                    swapValues(node, rightChild);
+                    node = rightChild;
+                } else {
+                    break;
+                }
+            }
+        }
+    }
+
+    private void swapValues(HeapNode node1, HeapNode node2) {
+        int temp = node1.data;
+        node1.data = node2.data;
+        node2.data = temp;
+    }
+
 }

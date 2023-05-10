@@ -104,7 +104,14 @@ public class DoublyLinkedList<T> {
         }
         System.out.println();
     }
-
+    public void printListReverse(){
+        Node<T> current = tail;
+        while (current!=null){
+            System.out.print(current.data+" ");
+            current =current.prev;
+        }
+        System.out.println();
+    }
     public static void main(String[] args) {
         DoublyLinkedList<String> list1 = new DoublyLinkedList<>();
         list1.addLast("Hi");
@@ -112,5 +119,6 @@ public class DoublyLinkedList<T> {
         list1.addLast("Are");
         list1.addLast("U");
         list1.printList();
+        list1.printListReverse();
     }
 }

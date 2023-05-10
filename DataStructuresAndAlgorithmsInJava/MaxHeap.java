@@ -85,12 +85,12 @@ public class MaxHeap {
         return null;
     }
     private void percolateUp(HeapNode node) {
-        HeapNode parent = getParent(node);
-        while (parent != null && parent.data < node.data) {
-            swapValues(node, parent);
-            node = parent;
-            parent = getParent(node);
-        }
+//        HeapNode parent = getParent(node);
+//        while (parent != null && parent.data < node.data) {
+//            swapValues(node, parent);
+//            node = parent;
+//            parent = getParent(node);
+//        }
     }
 
     private void percolateDown(HeapNode node) {

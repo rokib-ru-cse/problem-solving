@@ -44,6 +44,10 @@ public class BSTTest {
         tree.add(23);
         tree.add(21);
         tree.add(33);
+
+        tree.print(tree.root);
+        System.out.println();
+        tree.deleteKey(10);
         tree.print(tree.root);
         System.out.println();
         System.out.println(tree.search(444));

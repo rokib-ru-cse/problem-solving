@@ -5,28 +5,41 @@ import DataStructuresAndAlgorithmsInJava.TreeNode;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class HeightOfBinaryTree {
+
+public class CheckedforBalancedtree {
     TreeNode root;
     int size = 0;
 
     public static void main(String[] args) {
-        HeightOfBinaryTree tree = new HeightOfBinaryTree();
+        CheckedforBalancedtree tree = new CheckedforBalancedtree();
         tree.insert(100);
         tree.insert(2);
         tree.insert(10);
         tree.insert(110);
-        tree.print(tree.root);
-        System.out.println();
-        System.out.println("height " + tree.height(tree.root));
+        if (tree.isBalance(tree.root)) {
+            System.out.println("tree is balance");
+        } else {
+            System.out.println("tree is not balance");
+        }
     }
 
-    private int height(TreeNode root) {
+    private boolean isBalance(TreeNode root) {
         if (root == null) {
-            return 0;
+            return true;
         }
         int left = height(root.getLeft());
         int right = height(root.getRight());
-        return Math.max(left,right)+1;
+        if(Math.abs(left-right)<=1&&isBalance(root.getLeft())&&isBalance(root.getRight())){
+            return true;
+        }
+        return false;
+    }
+
+    private int height(TreeNode node) {
+        if (node == null) {
+            return 0;
+        }
+        return Math.max(height(node.getLeft()), height(node.getRight())) + 1;
     }
 
     private void print(TreeNode root) {
@@ -66,3 +79,15 @@ public class HeightOfBinaryTree {
         return null;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+

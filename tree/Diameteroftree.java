@@ -5,29 +5,34 @@ import DataStructuresAndAlgorithmsInJava.TreeNode;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class HeightOfBinaryTree {
+public class Diameteroftree {
     TreeNode root;
     int size = 0;
 
     public static void main(String[] args) {
-        HeightOfBinaryTree tree = new HeightOfBinaryTree();
+        Diameteroftree tree = new Diameteroftree();
         tree.insert(100);
         tree.insert(2);
         tree.insert(10);
         tree.insert(110);
-        tree.print(tree.root);
-        System.out.println();
-        System.out.println("height " + tree.height(tree.root));
+        System.out.println(tree.diameter());
     }
 
-    private int height(TreeNode root) {
-        if (root == null) {
+    private int diameter() {
+        int leftTree = subTree(root.getLeft());
+        int rightTree = subTree(root.getRight());
+        return leftTree + rightTree + 1;
+    }
+
+    private int subTree(TreeNode left) {
+        if (left == null) {
             return 0;
         }
-        int left = height(root.getLeft());
-        int right = height(root.getRight());
-        return Math.max(left,right)+1;
+        int l = subTree(left.getLeft());
+        int r = subTree(left.getRight());
+        return Math.max(l, r) + 1;
     }
+
 
     private void print(TreeNode root) {
         if (root == null) {
@@ -66,3 +71,14 @@ public class HeightOfBinaryTree {
         return null;
     }
 }
+
+
+
+
+
+
+
+
+
+
+

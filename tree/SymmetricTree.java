@@ -5,28 +5,35 @@ import DataStructuresAndAlgorithmsInJava.TreeNode;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class HeightOfBinaryTree {
+public class SymmetricTree {
     TreeNode root;
     int size = 0;
 
     public static void main(String[] args) {
-        HeightOfBinaryTree tree = new HeightOfBinaryTree();
+        SymmetricTree tree = new SymmetricTree();
         tree.insert(100);
         tree.insert(2);
-        tree.insert(10);
+        tree.insert(2);
         tree.insert(110);
-        tree.print(tree.root);
-        System.out.println();
-        System.out.println("height " + tree.height(tree.root));
+        tree.insert(4);
+        tree.insert(4);
+        tree.insert(110);
+        System.out.println(tree.isSymmetric());
     }
 
-    private int height(TreeNode root) {
-        if (root == null) {
-            return 0;
+    private boolean isSymmetric() {
+        return isSymmetricRec(root, root);
+    }
+
+    private boolean isSymmetricRec(TreeNode root, TreeNode root1) {
+        if (root == null && root1 == null) {
+            return true;
         }
-        int left = height(root.getLeft());
-        int right = height(root.getRight());
-        return Math.max(left,right)+1;
+        if (root != null && root1 != null
+                && root.getData() == root1.getData()) {
+            return (isSymmetricRec(root.getLeft(), root1.getRight()) && isSymmetricRec(root.getRight(), root1.getLeft()));
+        }
+        return false;
     }
 
     private void print(TreeNode root) {
@@ -66,3 +73,18 @@ public class HeightOfBinaryTree {
         return null;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

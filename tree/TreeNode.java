@@ -12,9 +12,4 @@ public class TreeNode {
        leftNode = null;
        rightNode = null;
     }
-    TreeNode(int data,TreeNode leftNode,TreeNode rightNode){
-        this.data =  data;
-        this.leftNode = leftNode;
-        this.rightNode = rightNode;
-     }
 }

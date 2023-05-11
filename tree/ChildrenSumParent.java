@@ -5,28 +5,44 @@ import DataStructuresAndAlgorithmsInJava.TreeNode;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class HeightOfBinaryTree {
+public class ChildrenSumParent {
     TreeNode root;
     int size = 0;
 
     public static void main(String[] args) {
-        HeightOfBinaryTree tree = new HeightOfBinaryTree();
+        ChildrenSumParent tree = new ChildrenSumParent();
         tree.insert(100);
         tree.insert(2);
-        tree.insert(10);
-        tree.insert(110);
-        tree.print(tree.root);
-        System.out.println();
-        System.out.println("height " + tree.height(tree.root));
+        tree.insert(98);
+        tree.insert(2);
+        if (tree.equalSum(tree.root)) {
+            System.out.println("all nodes child sum are equal to its parent");
+        } else {
+            System.out.println("all nodes child sum are not equal to its parent");
+        }
     }
 
-    private int height(TreeNode root) {
-        if (root == null) {
-            return 0;
+    private boolean equalSum(TreeNode root) {
+        if (root == null || (root.getLeft() == null && root.getRight() == null)) {
+            return true;
+        } else {
+            int p = root.getData();
+            int l = 0;
+            int r = 0;
+            if (root.getLeft() != null) {
+                l = root.getLeft().getData();
+            }
+            if (root.getRight() != null) {
+                r = root.getRight().getData();
+            }
+            boolean lx = equalSum(root.getLeft());
+            boolean rx = equalSum(root.getRight());
+            if (p == (l + r) && lx && rx) {
+                return true;
+            } else {
+                return false;
+            }
         }
-        int left = height(root.getLeft());
-        int right = height(root.getRight());
-        return Math.max(left,right)+1;
     }
 
     private void print(TreeNode root) {
@@ -66,3 +82,12 @@ public class HeightOfBinaryTree {
         return null;
     }
 }
+
+
+
+
+
+
+
+
+

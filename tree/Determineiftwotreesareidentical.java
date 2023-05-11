@@ -1,32 +1,35 @@
 package tree;
 
+
 import DataStructuresAndAlgorithmsInJava.TreeNode;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class HeightOfBinaryTree {
+public class Determineiftwotreesareidentical {
     TreeNode root;
     int size = 0;
 
     public static void main(String[] args) {
-        HeightOfBinaryTree tree = new HeightOfBinaryTree();
+        Determineiftwotreesareidentical tree = new Determineiftwotreesareidentical();
         tree.insert(100);
         tree.insert(2);
         tree.insert(10);
         tree.insert(110);
-        tree.print(tree.root);
-        System.out.println();
-        System.out.println("height " + tree.height(tree.root));
+
+        Determineiftwotreesareidentical tree2 = new Determineiftwotreesareidentical();
+        tree2.insert(100);
+        tree2.insert(2);
+        tree2.insert(10);
+        tree2.insert(110);
+        System.out.println(tree.identical(tree.root, tree2.root));
     }
 
-    private int height(TreeNode root) {
-        if (root == null) {
-            return 0;
+    private boolean identical(TreeNode root, TreeNode root1) {
+        if (root == null && root1 == null) {
+            return true;
         }
-        int left = height(root.getLeft());
-        int right = height(root.getRight());
-        return Math.max(left,right)+1;
+        return root.getData() == root1.getData() && identical(root.getLeft(), root1.getLeft()) && identical(root.getRight(), root1.getRight());
     }
 
     private void print(TreeNode root) {
@@ -66,3 +69,6 @@ public class HeightOfBinaryTree {
         return null;
     }
 }
+
+
+

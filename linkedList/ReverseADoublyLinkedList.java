@@ -2,9 +2,8 @@ package linkedList;
 
 import DataStructuresAndAlgorithmsInJava.DoublyLinkNode;
 
-public class InsertingANodeIntoASortedDoublyLinkedList {
+public class ReverseADoublyLinkedList {
     DoublyLinkNode head;
-
     public static DoublyLinkNode sortedInsert(DoublyLinkNode llist, int data) {
         // Write your code here
         if (llist == null) {
@@ -33,9 +32,25 @@ public class InsertingANodeIntoASortedDoublyLinkedList {
         }
         return llist;
     }
+    public static DoublyLinkNode reverse(DoublyLinkNode llist) {
+        // Write your code here
+        if (llist == null) {
+            return null;
+        }
+        DoublyLinkNode current = llist;
+        DoublyLinkNode previous = null;
+        while (current != null) {
+            DoublyLinkNode temp = current.getNext();
+            current.setNext(previous);
+            current.setPrevious(temp);
+            previous = current;
+            current = temp;
+        }
+        return previous;
+    }
 
     public static void main(String[] args) {
-        InsertingANodeIntoASortedDoublyLinkedList list1 = new InsertingANodeIntoASortedDoublyLinkedList();
+        ReverseADoublyLinkedList list1 = new ReverseADoublyLinkedList();
         list1.head = sortedInsert(list1.head, 5);
         list1.head = sortedInsert(list1.head, 2);
         list1.head = sortedInsert(list1.head, 3);
@@ -43,9 +58,10 @@ public class InsertingANodeIntoASortedDoublyLinkedList {
         list1.head = sortedInsert(list1.head, 6);
 
         list1.print(list1.head);
-
+        list1.head =  reverse(list1.head);
+        System.out.println();
+        list1.print(list1.head);
     }
-
     private void print(DoublyLinkNode head) {
         DoublyLinkNode temp = head;
         while (temp != null) {

@@ -1,14 +1,14 @@
-package DataStructuresAndAlgorithmsInJava;
+package linkedList;
 
 public class ListNode {
-    int data;
-    ListNode next;
+    public int data;
+    public ListNode next;
 
     ListNode() {
 
     }
 
-    ListNode(int data) {
+    public ListNode(int data) {
         this.data = data;
         this.next = null;
     }

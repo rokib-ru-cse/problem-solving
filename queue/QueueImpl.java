@@ -1,4 +1,6 @@
-package DataStructuresAndAlgorithmsInJava;
+package queue;
+
+import linkedList.ListNode;
 
 public class QueueImpl {
     private ListNode front;

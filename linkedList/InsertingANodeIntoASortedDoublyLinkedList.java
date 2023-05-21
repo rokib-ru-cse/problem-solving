@@ -1,7 +1,5 @@
 package linkedList;
 
-import DataStructuresAndAlgorithmsInJava.DoublyLinkNode;
-
 public class InsertingANodeIntoASortedDoublyLinkedList {
     DoublyLinkNode head;
 

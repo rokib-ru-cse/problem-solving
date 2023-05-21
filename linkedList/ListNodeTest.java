@@ -1,4 +1,4 @@
-package DataStructuresAndAlgorithmsInJava;
+package linkedList;
 
 public class ListNodeTest {
     int data;

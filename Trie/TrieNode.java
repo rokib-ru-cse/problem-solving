@@ -1,4 +1,4 @@
-package DataStructuresAndAlgorithmsInJava;
+package Trie;
 
 import java.util.HashMap;
 import java.util.Map;

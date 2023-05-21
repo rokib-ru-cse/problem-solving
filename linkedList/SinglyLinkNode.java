@@ -1,4 +1,4 @@
-package DataStructuresAndAlgorithmsInJava;
+package linkedList;
 
 public class SinglyLinkNode<T> {
    public T data;

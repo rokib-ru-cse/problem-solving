@@ -1,4 +1,6 @@
-package DataStructuresAndAlgorithmsInJava;
+package stack;
+
+import linkedList.ListNodeG;
 
 public class StackG<T> {
     ListNodeG<T> front;

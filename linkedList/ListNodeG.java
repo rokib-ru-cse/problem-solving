@@ -1,4 +1,4 @@
-package DataStructuresAndAlgorithmsInJava;
+package linkedList;
 
 public class ListNodeG<T> {
     T data;

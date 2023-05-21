@@ -1,4 +1,4 @@
-package DataStructuresAndAlgorithmsInJava;
+package tree;
 
 public class HeapNode {
     int data;

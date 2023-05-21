@@ -1,7 +1,5 @@
 package linkedList;
 
-import DataStructuresAndAlgorithmsInJava.SinglyLinkNode;
-
 public class SinglyLinkedListIsAPalindromeTest {
     SinglyLinkNode head;
 

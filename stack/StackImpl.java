@@ -1,6 +1,7 @@
-package DataStructuresAndAlgorithmsInJava;
+package stack;
 
-import java.util.LinkedList;
+import linkedList.ListNode;
+
 import java.util.Stack;
 
 public class StackImpl {

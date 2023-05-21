@@ -1,4 +1,4 @@
-package DataStructuresAndAlgorithmsInJava;
+package linkedList;
 
 public class InsertANodeInASinglyLinkedListAtAGivenPosition_48 {
     SinglyLinkNode head;

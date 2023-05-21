@@ -1,13 +1,9 @@
 package tree;
 
 import DataStructuresAndAlgorithmsInJava.TreeNode;
-import linkedList.Node;
 
 import java.util.LinkedList;
-import java.util.Map;
 import java.util.Queue;
-
-import static tree.HeightOfABinaryTree.height;
 
 public class SelfBalancingTree {
     DataStructuresAndAlgorithmsInJava.TreeNode root;

@@ -1,4 +1,4 @@
-package DataStructuresAndAlgorithmsInJava;
+package linkedList;
 
 import java.util.NoSuchElementException;
 

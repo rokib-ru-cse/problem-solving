@@ -1,7 +1,5 @@
 package linkedList;
 
-import DataStructuresAndAlgorithmsInJava.DoublyLinkNode;
-
 public class ReverseADoublyLinkedList {
     DoublyLinkNode head;
     public static DoublyLinkNode sortedInsert(DoublyLinkNode llist, int data) {

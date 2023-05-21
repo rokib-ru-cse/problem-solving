@@ -1,6 +1,5 @@
-package DataStructuresAndAlgorithmsInJava;
+package tree;
 
-import java.awt.*;
 import java.util.LinkedList;
 import java.util.Queue;
 

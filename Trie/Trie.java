@@ -1,4 +1,4 @@
-package DataStructuresAndAlgorithmsInJava;
+package Trie;
 
 public class Trie {
 

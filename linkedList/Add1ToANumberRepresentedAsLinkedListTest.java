@@ -1,7 +1,5 @@
 package linkedList;
 
-import DataStructuresAndAlgorithmsInJava.SinglyLinkNode;
-
 public class Add1ToANumberRepresentedAsLinkedListTest {
 
     SinglyLinkNode head;

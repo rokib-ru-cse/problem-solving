@@ -1,12 +1,10 @@
 package tree;
 
-import DataStructuresAndAlgorithmsInJava.TreeNode;
-
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class SelfBalancingTree {
-    DataStructuresAndAlgorithmsInJava.TreeNode root;
+    TreeNode root;
     int size = 0;
 
     public static void main(String[] args) {
@@ -26,7 +24,7 @@ public class SelfBalancingTree {
         return node.height;
     }
 
-    private void print(DataStructuresAndAlgorithmsInJava.TreeNode root) {
+    private void print(TreeNode root) {
         if (root == null) {
             return;
         }
@@ -37,7 +35,7 @@ public class SelfBalancingTree {
 
     private TreeNode insert(TreeNode root, int data) {
         if (root == null) {
-            root = new DataStructuresAndAlgorithmsInJava.TreeNode(data);
+            root = new TreeNode(data);
             return root;
         }
         if (data < root.data) {
@@ -93,8 +91,8 @@ public class SelfBalancingTree {
         return height(root.left) - height(root.right);
     }
 
-    private DataStructuresAndAlgorithmsInJava.TreeNode lastInsertedNode() {
-        Queue<DataStructuresAndAlgorithmsInJava.TreeNode> q = new LinkedList<>();
+    private TreeNode lastInsertedNode() {
+        Queue<TreeNode> q = new LinkedList<>();
         q.add(root);
         while (!q.isEmpty()) {
             TreeNode temp = q.poll();

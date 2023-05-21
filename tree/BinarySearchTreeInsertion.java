@@ -1,13 +1,13 @@
 package tree;
 
-import DataStructuresAndAlgorithmsInJava.TreeNode;
+import tree.TreeNode;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
 
 public class BinarySearchTreeInsertion {
-    DataStructuresAndAlgorithmsInJava.TreeNode root;
+    TreeNode root;
     int size = 0;
 
     public static TreeNode insert(TreeNode root, int data) {
@@ -40,7 +40,7 @@ public class BinarySearchTreeInsertion {
         tree.print(tree.root);
     }
 
-    private void print(DataStructuresAndAlgorithmsInJava.TreeNode root) {
+    private void print(TreeNode root) {
         if (root == null) {
             return;
         }
@@ -50,8 +50,8 @@ public class BinarySearchTreeInsertion {
     }
 
 
-    private DataStructuresAndAlgorithmsInJava.TreeNode lastInsertedNode() {
-        Queue<DataStructuresAndAlgorithmsInJava.TreeNode> q = new LinkedList<>();
+    private TreeNode lastInsertedNode() {
+        Queue<TreeNode> q = new LinkedList<>();
         q.add(root);
         while (!q.isEmpty()) {
             TreeNode temp = q.poll();

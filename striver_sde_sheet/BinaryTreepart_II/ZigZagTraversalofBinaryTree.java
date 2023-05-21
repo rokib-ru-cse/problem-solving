@@ -1,11 +1,11 @@
 package striver_sde_sheet.BinaryTreepart_II;
 
 
-import DataStructuresAndAlgorithmsInJava.TreeNode;
-
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
+
+import tree.TreeNode;
 
 public class ZigZagTraversalofBinaryTree {
     TreeNode root;

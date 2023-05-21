@@ -26,26 +26,26 @@ public class TwoTreesAreIdenticalOrNot {
         TreeNode eleventhNode = new TreeNode(48);
         TreeNode twelvethNode = new TreeNode(4);
 
-        root1.leftNode = firstNode;
-        root1.rightNode = secondNode;
+        root1.left = firstNode;
+        root1.right = secondNode;
 
-        root2.leftNode = firstNode;
-        root2.rightNode = secondNode;
+        root2.left = firstNode;
+        root2.right = secondNode;
 
-        firstNode.leftNode = thirdNode;
-        firstNode.rightNode = fourthNode;
+        firstNode.left = thirdNode;
+        firstNode.right = fourthNode;
 
-        secondNode.leftNode = fivethNode;
-        secondNode.rightNode = sixthNode;
+        secondNode.left = fivethNode;
+        secondNode.right = sixthNode;
 
-        thirdNode.leftNode = seventhNode;
-        thirdNode.rightNode = eighthNode;
+        thirdNode.left = seventhNode;
+        thirdNode.right = eighthNode;
 
-        fivethNode.leftNode = ninethNode;
-        sixthNode.leftNode = tenthNode;
-        sixthNode.rightNode = eleventhNode;
+        fivethNode.left = ninethNode;
+        sixthNode.left = tenthNode;
+        sixthNode.right = eleventhNode;
 
-        seventhNode.leftNode = twelvethNode;
+        seventhNode.left = twelvethNode;
 
     }
 }

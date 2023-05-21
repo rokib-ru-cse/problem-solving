@@ -1,6 +1,6 @@
 package tree;
 
-import DataStructuresAndAlgorithmsInJava.TreeNode;
+import tree.TreeNode;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -30,7 +30,7 @@ public class InorderTraversal {
         tree.print(tree.root);
     }
 
-    private void print(DataStructuresAndAlgorithmsInJava.TreeNode root) {
+    private void print(TreeNode root) {
         if (root == null) {
             return;
         }
@@ -41,19 +41,19 @@ public class InorderTraversal {
 
     private void insert(int data) {
         if (root == null) {
-            root = new DataStructuresAndAlgorithmsInJava.TreeNode(data);
+            root = new TreeNode(data);
             return;
         }
-        DataStructuresAndAlgorithmsInJava.TreeNode lastInsertedNode = lastInsertedNode();
+        TreeNode lastInsertedNode = lastInsertedNode();
         if (lastInsertedNode.left == null) {
-            lastInsertedNode.left = new DataStructuresAndAlgorithmsInJava.TreeNode(data);
+            lastInsertedNode.left = new TreeNode(data);
         } else {
-            lastInsertedNode.right = new DataStructuresAndAlgorithmsInJava.TreeNode(data);
+            lastInsertedNode.right = new TreeNode(data);
         }
     }
 
-    private DataStructuresAndAlgorithmsInJava.TreeNode lastInsertedNode() {
-        Queue<DataStructuresAndAlgorithmsInJava.TreeNode> q = new LinkedList<>();
+    private TreeNode lastInsertedNode() {
+        Queue<TreeNode> q = new LinkedList<>();
         q.add(root);
         while (!q.isEmpty()) {
             TreeNode temp = q.poll();

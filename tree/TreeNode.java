@@ -1,15 +1,19 @@
 package tree;
 
 public class TreeNode {
-    int data;
-    TreeNode leftNode;
-    TreeNode rightNode;
-    TreeNode(){
+    public int data;
+    public int height;
+    public TreeNode left;
+    public TreeNode right;
+
+    TreeNode() {
 
     }
-    TreeNode(int data){
-       this.data =  data;
-       leftNode = null;
-       rightNode = null;
+
+    public TreeNode(int data) {
+        this.data = data;
+        this.height = 1;
+        left = null;
+        right = null;
     }
 }

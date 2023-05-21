@@ -1,11 +1,13 @@
 package linkedList;
 
 public class ListNodeG<T> {
-    T data;
-    ListNodeG next;
+    public T data;
+    public ListNodeG next;
 
-    ListNodeG(){}
-    ListNodeG(T data){
+    ListNodeG() {
+    }
+
+    public ListNodeG(T data) {
         this.data = data;
         this.next = null;
     }

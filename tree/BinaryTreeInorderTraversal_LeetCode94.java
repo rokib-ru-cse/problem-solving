@@ -1,7 +1,5 @@
 package tree;
 
-import DataStructuresAndAlgorithmsInJava.TreeNode;
-
 import java.util.*;
 
 public class BinaryTreeInorderTraversal_LeetCode94 {
@@ -16,48 +14,50 @@ public class BinaryTreeInorderTraversal_LeetCode94 {
         tree.insert(110);
         tree.print(tree.root);
         System.out.println();
-        for (int s:tree.inorderTraversal(tree.root)
-             ) {
-            System.out.print(s+" ");
+        for (int s : tree.inorderTraversal(tree.root)
+        ) {
+            System.out.print(s + " ");
         }
     }
-    public List<Integer> inorderTraversal(TreeNode root){
+
+    public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> res = new ArrayList<>();
-        if (root==null){
+        if (root == null) {
             return res;
         }
         Stack<TreeNode> stack = new Stack<>();
         TreeNode curr = root;
-        while (curr != null || stack.size()>0 ){
+        while (curr != null || stack.size() > 0) {
 
-            while (curr!=null){
+            while (curr != null) {
                 stack.add(curr);
                 curr = curr.left;
             }
-            curr  =stack.pop();
+            curr = stack.pop();
             res.add(curr.data);
             curr = curr.right;
         }
         return res;
     }
+
     private void print(TreeNode root) {
-        if (root==null){
+        if (root == null) {
             return;
         }
         print(root.left);
-        System.out.print(root.data+" ");
+        System.out.print(root.data + " ");
         print(root.right);
     }
 
     private void insert(int data) {
-        if(root==null){
+        if (root == null) {
             root = new TreeNode(data);
             return;
         }
         TreeNode lastInsertedNode = lastInsertedNode();
-        if (lastInsertedNode.left==null){
+        if (lastInsertedNode.left == null) {
             lastInsertedNode.left = (new TreeNode(data));
-        }else{
+        } else {
             lastInsertedNode.right = (new TreeNode(data));
         }
     }
@@ -65,12 +65,12 @@ public class BinaryTreeInorderTraversal_LeetCode94 {
     private TreeNode lastInsertedNode() {
         Queue<TreeNode> q = new LinkedList<>();
         q.add(root);
-        while (!q.isEmpty()){
+        while (!q.isEmpty()) {
             TreeNode temp = q.poll();
-            if(temp.left!=null&&temp.right!=null){
+            if (temp.left != null && temp.right != null) {
                 q.add(temp.left);
                 q.add(temp.right);
-            }else{
+            } else {
                 return temp;
             }
         }

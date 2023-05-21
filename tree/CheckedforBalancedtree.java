@@ -1,6 +1,5 @@
 package tree;
 
-import DataStructuresAndAlgorithmsInJava.TreeNode;
 
 import java.util.LinkedList;
 import java.util.Queue;

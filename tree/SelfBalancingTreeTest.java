@@ -1,6 +1,6 @@
 package tree;
 
-import DataStructuresAndAlgorithmsInJava.TreeNode;
+import tree.TreeNode;
 
 
 public class SelfBalancingTreeTest {

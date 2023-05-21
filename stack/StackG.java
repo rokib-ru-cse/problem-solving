@@ -3,9 +3,9 @@ package stack;
 import linkedList.ListNodeG;
 
 public class StackG<T> {
-    ListNodeG<T> front;
-    ListNodeG<T> tail;
-    int size = 0;
+    public ListNodeG<T> front;
+    public ListNodeG<T> tail;
+    public int size = 0;
 
     public static void main(String[] args) {
         StackG<String> stack = new StackG<>();
@@ -24,13 +24,13 @@ public class StackG<T> {
 
     private void print() {
         ListNodeG<T> temp = front;
-        while (temp!=null){
-            if(temp.next==null){
+        while (temp != null) {
+            if (temp.next == null) {
                 System.out.print(temp.data);
-            }else{
-                System.out.print(temp.data+" ");
+            } else {
+                System.out.print(temp.data + " ");
             }
-            temp=temp.next;
+            temp = temp.next;
         }
         System.out.println();
     }

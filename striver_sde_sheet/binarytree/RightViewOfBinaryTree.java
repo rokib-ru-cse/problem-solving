@@ -1,6 +1,6 @@
 package striver_sde_sheet.binarytree;
 
-import DataStructuresAndAlgorithmsInJava.TreeNode;
+import tree.TreeNode;
 
 import java.util.LinkedList;
 import java.util.Queue;

@@ -23,20 +23,20 @@ public class ChildrenSumParent {
     }
 
     private boolean equalSum(TreeNode root) {
-        if (root == null || (root.getLeft() == null && root.getRight() == null)) {
+        if (root == null || (root.left == null && root.right == null)) {
             return true;
         } else {
-            int p = root.getData();
+            int p = root.data;
             int l = 0;
             int r = 0;
-            if (root.getLeft() != null) {
-                l = root.getLeft().getData();
+            if (root.left != null) {
+                l = root.left.data;
             }
-            if (root.getRight() != null) {
-                r = root.getRight().getData();
+            if (root.right != null) {
+                r = root.right.data;
             }
-            boolean lx = equalSum(root.getLeft());
-            boolean rx = equalSum(root.getRight());
+            boolean lx = equalSum(root.left);
+            boolean rx = equalSum(root.right);
             if (p == (l + r) && lx && rx) {
                 return true;
             } else {
@@ -49,9 +49,9 @@ public class ChildrenSumParent {
         if (root == null) {
             return;
         }
-        print(root.getLeft());
-        System.out.print(root.getData() + " ");
-        print(root.getRight());
+        print(root.left);
+        System.out.print(root.data + " ");
+        print(root.right);
     }
 
     private void insert(int data) {
@@ -60,10 +60,10 @@ public class ChildrenSumParent {
             return;
         }
         TreeNode lastInsertedNode = lastInsertedNode();
-        if (lastInsertedNode.getLeft() == null) {
-            lastInsertedNode.setLeft(new TreeNode(data));
+        if (lastInsertedNode.left == null) {
+            lastInsertedNode.left = new TreeNode(data);
         } else {
-            lastInsertedNode.setRight(new TreeNode(data));
+            lastInsertedNode.right = new TreeNode(data);
         }
     }
 
@@ -72,9 +72,9 @@ public class ChildrenSumParent {
         q.add(root);
         while (!q.isEmpty()) {
             TreeNode temp = q.poll();
-            if (temp.getLeft() != null && temp.getRight() != null) {
-                q.add(temp.getLeft());
-                q.add(temp.getRight());
+            if (temp.left != null && temp.right != null) {
+                q.add(temp.left);
+                q.add(temp.right);
             } else {
                 return temp;
             }

@@ -27,9 +27,9 @@ public class CheckedforBalancedtree {
         if (root == null) {
             return true;
         }
-        int left = height(root.getLeft());
-        int right = height(root.getRight());
-        if(Math.abs(left-right)<=1&&isBalance(root.getLeft())&&isBalance(root.getRight())){
+        int left = height(root.left);
+        int right = height(root.right);
+        if (Math.abs(left - right) <= 1 && isBalance(root.left) && isBalance(root.right)) {
             return true;
         }
         return false;
@@ -39,16 +39,16 @@ public class CheckedforBalancedtree {
         if (node == null) {
             return 0;
         }
-        return Math.max(height(node.getLeft()), height(node.getRight())) + 1;
+        return Math.max(height(node.left), height(node.right)) + 1;
     }
 
     private void print(TreeNode root) {
         if (root == null) {
             return;
         }
-        print(root.getLeft());
-        System.out.print(root.getData() + " ");
-        print(root.getRight());
+        print(root.left);
+        System.out.print(root.data + " ");
+        print(root.right);
     }
 
     private void insert(int data) {
@@ -57,10 +57,10 @@ public class CheckedforBalancedtree {
             return;
         }
         TreeNode lastInsertedNode = lastInsertedNode();
-        if (lastInsertedNode.getLeft() == null) {
-            lastInsertedNode.setLeft(new TreeNode(data));
+        if (lastInsertedNode.left == null) {
+            lastInsertedNode.left = new TreeNode(data);
         } else {
-            lastInsertedNode.setRight(new TreeNode(data));
+            lastInsertedNode.right = new TreeNode(data);
         }
     }
 
@@ -69,9 +69,9 @@ public class CheckedforBalancedtree {
         q.add(root);
         while (!q.isEmpty()) {
             TreeNode temp = q.poll();
-            if (temp.getLeft() != null && temp.getRight() != null) {
-                q.add(temp.getLeft());
-                q.add(temp.getRight());
+            if (temp.left != null && temp.right != null) {
+                q.add(temp.left);
+                q.add(temp.right);
             } else {
                 return temp;
             }

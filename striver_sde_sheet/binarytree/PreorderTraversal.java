@@ -29,12 +29,12 @@ public class PreorderTraversal {
         TreeNode currentNode = root;
         while (!stack.isEmpty() || currentNode != null) {
             if (currentNode != null) {
-                System.out.print(currentNode.getData() + " ");
+                System.out.print(currentNode.data + " ");
                 stack.add(currentNode);
-                currentNode = currentNode.getLeft();
+                currentNode = currentNode.left;
             } else {
                 TreeNode node = stack.pop();
-                currentNode = node.getRight();
+                currentNode = node.right;
             }
         }
     }
@@ -44,12 +44,12 @@ public class PreorderTraversal {
         stack.push(root);
         while (!stack.empty()) {
             TreeNode curr = stack.pop();
-            System.out.print(curr.getData() + " ");
-            if (curr.getRight() != null) {
-                stack.push(curr.getRight());
+            System.out.print(curr.data + " ");
+            if (curr.right != null) {
+                stack.push(curr.right);
             }
-            if (curr.getLeft() != null) {
-                stack.push(curr.getLeft());
+            if (curr.left != null) {
+                stack.push(curr.left);
             }
         }
     }
@@ -58,9 +58,9 @@ public class PreorderTraversal {
         if (root == null) {
             return;
         }
-        System.out.print(root.getData() + " ");
-        print(root.getLeft());
-        print(root.getRight());
+        System.out.print(root.data + " ");
+        print(root.left);
+        print(root.right);
     }
 
     private void insert(int data) {
@@ -69,10 +69,10 @@ public class PreorderTraversal {
             return;
         }
         TreeNode lastInsertedNode = lastInsertedNode();
-        if (lastInsertedNode.getLeft() == null) {
-            lastInsertedNode.setLeft(new TreeNode(data));
+        if (lastInsertedNode.left == null) {
+            lastInsertedNode.left = new TreeNode(data);
         } else {
-            lastInsertedNode.setRight(new TreeNode(data));
+            lastInsertedNode.right = new TreeNode(data);
         }
     }
 
@@ -81,9 +81,9 @@ public class PreorderTraversal {
         q.add(root);
         while (!q.isEmpty()) {
             TreeNode temp = q.poll();
-            if (temp.getLeft() != null && temp.getRight() != null) {
-                q.add(temp.getLeft());
-                q.add(temp.getRight());
+            if (temp.left != null && temp.right != null) {
+                q.add(temp.left);
+                q.add(temp.right);
             } else {
                 return temp;
             }

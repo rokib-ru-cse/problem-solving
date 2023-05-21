@@ -1,10 +1,10 @@
 package DataStructuresAndAlgorithmsInJava;
 
 public class SinglyLinkNode<T> {
-    T data;
+   public T data;
     SinglyLinkNode<T> next;
 
-    public T getData() {
+    public T data() {
         return data;
     }
 

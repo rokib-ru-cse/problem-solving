@@ -23,10 +23,10 @@ public class BinarySearchTreeLowestCommonAncestor {
         if (root == null) {
             return new TreeNode(data);
         }
-        if (data < root.getData()) {
-            root.setLeft(insertRec(root.getLeft(), data));
+        if (data < root.data) {
+            root.left = (insertRec(root.left, data));
         } else {
-            root.setRight(insertRec(root.getRight(), data));
+            root.right = (insertRec(root.right, data));
         }
         return root;
     }
@@ -39,17 +39,17 @@ public class BinarySearchTreeLowestCommonAncestor {
         tree.root = tree.insert(tree.root, 110);
         tree.print(tree.root);
         System.out.println();
-        System.out.println(lca(tree.root, 10, 110).getData());
+        System.out.println(lca(tree.root, 10, 110).data);
     }
 
 
     public static TreeNode lca(TreeNode root, int v1, int v2) {
         // Write your code here.
-        if (root == null ||root.getData()==v1 || root.getData()==v2) {
+        if (root == null ||root.data==v1 || root.data==v2) {
             return root;
         }
-        TreeNode left = lca(root.getLeft(), v1, v2);
-        TreeNode right = lca(root.getRight(), v1, v2);
+        TreeNode left = lca(root.left, v1, v2);
+        TreeNode right = lca(root.right, v1, v2);
         if (left==null){
             return right;
         }else if (right==null){
@@ -62,9 +62,9 @@ public class BinarySearchTreeLowestCommonAncestor {
         if (root == null) {
             return;
         }
-        print(root.getLeft());
-        System.out.print(root.getData() + " ");
-        print(root.getRight());
+        print(root.left);
+        System.out.print(root.data + " ");
+        print(root.right);
     }
 
     private void insert(int data) {
@@ -73,10 +73,10 @@ public class BinarySearchTreeLowestCommonAncestor {
             return;
         }
         DataStructuresAndAlgorithmsInJava.TreeNode lastInsertedNode = lastInsertedNode();
-        if (lastInsertedNode.getLeft() == null) {
-            lastInsertedNode.setLeft(new DataStructuresAndAlgorithmsInJava.TreeNode(data));
+        if (lastInsertedNode.left == null) {
+            lastInsertedNode.left = (new DataStructuresAndAlgorithmsInJava.TreeNode(data));
         } else {
-            lastInsertedNode.setRight(new DataStructuresAndAlgorithmsInJava.TreeNode(data));
+            lastInsertedNode.right = (new DataStructuresAndAlgorithmsInJava.TreeNode(data));
         }
     }
 
@@ -85,9 +85,9 @@ public class BinarySearchTreeLowestCommonAncestor {
         q.add(root);
         while (!q.isEmpty()) {
             TreeNode temp = q.poll();
-            if (temp.getLeft() != null && temp.getRight() != null) {
-                q.add(temp.getLeft());
-                q.add(temp.getRight());
+            if (temp.left != null && temp.right != null) {
+                q.add(temp.left);
+                q.add(temp.right);
             } else {
                 return temp;
             }

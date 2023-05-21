@@ -16,59 +16,59 @@ public class Mirrortree {
         tree.insert(10);
         tree.insert(110);
         tree.print(tree.root);
-        
-       tree.mirror(tree.root);
+
+        tree.mirror(tree.root);
         System.out.println();
         tree.print(tree.root);
 
     }
 
     private void mirror(TreeNode root) {
-        root =  mirrorRec(root);
+        root = mirrorRec(root);
     }
 
     private TreeNode mirrorRec(TreeNode root) {
-        if (root==null){
+        if (root == null) {
             return root;
         }
-        TreeNode left = mirrorRec(root.getLeft());
-        TreeNode right = mirrorRec(root.getRight());
-        root.setLeft(right);
-        root.setRight(left);
+        TreeNode left = mirrorRec(root.left);
+        TreeNode right = mirrorRec(root.right);
+        root.left = right;
+        root.right = left;
         return root;
     }
 
     private void print(TreeNode root) {
-        if (root==null){
+        if (root == null) {
             return;
         }
-        print(root.getLeft());
-        System.out.print(root.getData()+" ");
-        print(root.getRight());
+        print(root.left);
+        System.out.print(root.data + " ");
+        print(root.right);
     }
 
     private void insert(int data) {
-        if(root==null){
+        if (root == null) {
             root = new TreeNode(data);
             return;
         }
         TreeNode lastInsertedNode = lastInsertedNode();
-        if (lastInsertedNode.getLeft()==null){
-            lastInsertedNode.setLeft(new TreeNode(data));
-        }else{
-            lastInsertedNode.setRight(new TreeNode(data));
+        if (lastInsertedNode.left == null) {
+            lastInsertedNode.left = new TreeNode(data);
+        } else {
+            lastInsertedNode.right = new TreeNode(data);
         }
     }
 
     private TreeNode lastInsertedNode() {
         Queue<TreeNode> q = new LinkedList<>();
         q.add(root);
-        while (!q.isEmpty()){
+        while (!q.isEmpty()) {
             TreeNode temp = q.poll();
-            if(temp.getLeft()!=null&&temp.getRight()!=null){
-                q.add(temp.getLeft());
-                q.add(temp.getRight());
-            }else{
+            if (temp.left != null && temp.right != null) {
+                q.add(temp.left);
+                q.add(temp.right);
+            } else {
                 return temp;
             }
         }

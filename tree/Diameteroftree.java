@@ -19,8 +19,8 @@ public class Diameteroftree {
     }
 
     private int diameter() {
-        int leftTree = subTree(root.getLeft());
-        int rightTree = subTree(root.getRight());
+        int leftTree = subTree(root.left);
+        int rightTree = subTree(root.right);
         return leftTree + rightTree + 1;
     }
 
@@ -28,8 +28,8 @@ public class Diameteroftree {
         if (left == null) {
             return 0;
         }
-        int l = subTree(left.getLeft());
-        int r = subTree(left.getRight());
+        int l = subTree(left.left);
+        int r = subTree(left.right);
         return Math.max(l, r) + 1;
     }
 
@@ -38,9 +38,9 @@ public class Diameteroftree {
         if (root == null) {
             return;
         }
-        print(root.getLeft());
-        System.out.print(root.getData() + " ");
-        print(root.getRight());
+        print(root.left);
+        System.out.print(root.data + " ");
+        print(root.right);
     }
 
     private void insert(int data) {
@@ -49,10 +49,10 @@ public class Diameteroftree {
             return;
         }
         TreeNode lastInsertedNode = lastInsertedNode();
-        if (lastInsertedNode.getLeft() == null) {
-            lastInsertedNode.setLeft(new TreeNode(data));
+        if (lastInsertedNode.left == null) {
+            lastInsertedNode.left = (new TreeNode(data));
         } else {
-            lastInsertedNode.setRight(new TreeNode(data));
+            lastInsertedNode.right = (new TreeNode(data));
         }
     }
 
@@ -61,9 +61,9 @@ public class Diameteroftree {
         q.add(root);
         while (!q.isEmpty()) {
             TreeNode temp = q.poll();
-            if (temp.getLeft() != null && temp.getRight() != null) {
-                q.add(temp.getLeft());
-                q.add(temp.getRight());
+            if (temp.left != null && temp.right != null) {
+                q.add(temp.left);
+                q.add(temp.right);
             } else {
                 return temp;
             }

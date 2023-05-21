@@ -15,7 +15,7 @@ public class HeightOfABinaryTree {
         if (root == null) {
             return 0;
         }
-        return Math.max(height(root.getLeft()), height(root.getRight())) + 1;
+        return Math.max(height(root.left), height(root.right)) + 1;
     }
 
     public static void main(String[] args) {
@@ -31,9 +31,9 @@ public class HeightOfABinaryTree {
         if (root == null) {
             return;
         }
-        print(root.getLeft());
-        System.out.print(root.getData() + " ");
-        print(root.getRight());
+        print(root.left);
+        System.out.print(root.data + " ");
+        print(root.right);
     }
 
     private void insert(int data) {
@@ -42,10 +42,10 @@ public class HeightOfABinaryTree {
             return;
         }
         DataStructuresAndAlgorithmsInJava.TreeNode lastInsertedNode = lastInsertedNode();
-        if (lastInsertedNode.getLeft() == null) {
-            lastInsertedNode.setLeft(new DataStructuresAndAlgorithmsInJava.TreeNode(data));
+        if (lastInsertedNode.left == null) {
+            lastInsertedNode.left = new DataStructuresAndAlgorithmsInJava.TreeNode(data);
         } else {
-            lastInsertedNode.setRight(new DataStructuresAndAlgorithmsInJava.TreeNode(data));
+            lastInsertedNode.right = new DataStructuresAndAlgorithmsInJava.TreeNode(data);
         }
     }
 
@@ -54,9 +54,9 @@ public class HeightOfABinaryTree {
         q.add(root);
         while (!q.isEmpty()) {
             TreeNode temp = q.poll();
-            if (temp.getLeft() != null && temp.getRight() != null) {
-                q.add(temp.getLeft());
-                q.add(temp.getRight());
+            if (temp.left != null && temp.right != null) {
+                q.add(temp.left);
+                q.add(temp.right);
             } else {
                 return temp;
             }

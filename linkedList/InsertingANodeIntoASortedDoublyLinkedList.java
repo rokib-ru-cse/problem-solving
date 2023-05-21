@@ -13,7 +13,7 @@ public class InsertingANodeIntoASortedDoublyLinkedList {
         }
         DoublyLinkNode temp = llist;
         DoublyLinkNode previous = null;
-        while (temp != null && (int) temp.getData() <= data) {
+        while (temp != null && (int) temp.data <= data) {
             previous = temp;
             temp = temp.getNext();
         }
@@ -49,7 +49,7 @@ public class InsertingANodeIntoASortedDoublyLinkedList {
     private void print(DoublyLinkNode head) {
         DoublyLinkNode temp = head;
         while (temp != null) {
-            System.out.print(temp.getData() + " ");
+            System.out.print(temp.data + " ");
             temp = temp.getNext();
         }
     }

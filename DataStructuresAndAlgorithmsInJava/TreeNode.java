@@ -13,6 +13,7 @@ public class TreeNode {
 
     public TreeNode(int data) {
         this.data = data;
+        this.height = 1;
         left = null;
         right = null;
         parent = null;

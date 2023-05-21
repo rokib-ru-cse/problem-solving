@@ -29,16 +29,16 @@ public class Determineiftwotreesareidentical {
         if (root == null && root1 == null) {
             return true;
         }
-        return root.getData() == root1.getData() && identical(root.getLeft(), root1.getLeft()) && identical(root.getRight(), root1.getRight());
+        return root.data == root1.data && identical(root.left, root1.left) && identical(root.right, root1.right);
     }
 
     private void print(TreeNode root) {
         if (root == null) {
             return;
         }
-        print(root.getLeft());
-        System.out.print(root.getData() + " ");
-        print(root.getRight());
+        print(root.left);
+        System.out.print(root.data + " ");
+        print(root.right);
     }
 
     private void insert(int data) {
@@ -47,10 +47,10 @@ public class Determineiftwotreesareidentical {
             return;
         }
         TreeNode lastInsertedNode = lastInsertedNode();
-        if (lastInsertedNode.getLeft() == null) {
-            lastInsertedNode.setLeft(new TreeNode(data));
+        if (lastInsertedNode.left == null) {
+            lastInsertedNode.left = new TreeNode(data);
         } else {
-            lastInsertedNode.setRight(new TreeNode(data));
+            lastInsertedNode.right = new TreeNode(data);
         }
     }
 
@@ -59,9 +59,9 @@ public class Determineiftwotreesareidentical {
         q.add(root);
         while (!q.isEmpty()) {
             TreeNode temp = q.poll();
-            if (temp.getLeft() != null && temp.getRight() != null) {
-                q.add(temp.getLeft());
-                q.add(temp.getRight());
+            if (temp.left != null && temp.right != null) {
+                q.add(temp.left);
+                q.add(temp.right);
             } else {
                 return temp;
             }

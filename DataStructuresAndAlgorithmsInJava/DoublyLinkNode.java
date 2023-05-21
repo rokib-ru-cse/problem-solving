@@ -1,11 +1,11 @@
 package DataStructuresAndAlgorithmsInJava;
 
 public class DoublyLinkNode<T> {
-    T data;
+   public T data;
     DoublyLinkNode next;
     DoublyLinkNode previous;
 
-    public T getData() {
+    public T data() {
         return data;
     }
 

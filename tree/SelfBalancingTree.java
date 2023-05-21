@@ -23,6 +23,13 @@ public class SelfBalancingTree {
         tree.root = tree.insert(tree.root, 25);
     }
 
+    private static int height(TreeNode node) {
+        if (node == null) {
+            return 0;
+        }
+        return node.height;
+    }
+
     private void print(DataStructuresAndAlgorithmsInJava.TreeNode root) {
         if (root == null) {
             return;
@@ -44,8 +51,9 @@ public class SelfBalancingTree {
         } else {
             return root;
         }
-        root.height = 1 + Math.max(root.left.data, root.right.data);
+        root.height = 1 + Math.max(height(root.left), height(root.right));
         int balance = getBalance(root);
+
         if (balance > 1 && data < root.left.data) {
             return rightRotate(root);
         }
@@ -58,7 +66,7 @@ public class SelfBalancingTree {
             root.left = leftRotate(root.left);
             return rightRotate(root);
         }
-        if (balance<-1 && data<root.right.data){
+        if (balance < -1 && data < root.right.data) {
             root.right = rightRotate(root.right);
             return leftRotate(root);
         }
@@ -76,8 +84,8 @@ public class SelfBalancingTree {
         left.right = root;
         root.left = right;
 
-        root.height = Math.max(height(root.left),height(root.right))+1;
-        left.height = Math.max(height(left.left),height(left.right))+1;
+        root.height = Math.max(height(root.left), height(root.right)) + 1;
+        left.height = Math.max(height(left.left), height(left.right)) + 1;
 
         return left;
     }

@@ -37,20 +37,20 @@ public class ZigZagTreeTraversal {
 
         while (!currentLevel.isEmpty()) {
             TreeNode node = currentLevel.pop();
-            System.out.print(node.getData() + " ");
+            System.out.print(node.data + " ");
             if (isLeftToRight) {
-                if (node.getLeft() != null) {
-                    nextLevel.add(node.getLeft());
+                if (node.left != null) {
+                    nextLevel.add(node.left);
                 }
-                if (node.getRight() != null) {
-                    nextLevel.add(node.getRight());
+                if (node.right != null) {
+                    nextLevel.add(node.right);
                 }
             } else {
-                if (node.getRight() != null) {
-                    nextLevel.add(node.getRight());
+                if (node.right != null) {
+                    nextLevel.add(node.right);
                 }
-                if (node.getLeft() != null) {
-                    nextLevel.add(node.getLeft());
+                if (node.left != null) {
+                    nextLevel.add(node.left);
                 }
             }
             if(currentLevel.isEmpty()){
@@ -66,9 +66,9 @@ public class ZigZagTreeTraversal {
         if (root == null) {
             return;
         }
-        print(root.getLeft());
-        System.out.print(root.getData() + " ");
-        print(root.getRight());
+        print(root.left);
+        System.out.print(root.data + " ");
+        print(root.right);
     }
 
     private void insert(int data) {
@@ -77,10 +77,10 @@ public class ZigZagTreeTraversal {
             return;
         }
         TreeNode lastInsertedNode = lastInsertedNode();
-        if (lastInsertedNode.getLeft() == null) {
-            lastInsertedNode.setLeft(new TreeNode(data));
+        if (lastInsertedNode.left == null) {
+            lastInsertedNode.left =new TreeNode(data);
         } else {
-            lastInsertedNode.setRight(new TreeNode(data));
+            lastInsertedNode.right = new TreeNode(data);
         }
     }
 
@@ -89,9 +89,9 @@ public class ZigZagTreeTraversal {
         q.add(root);
         while (!q.isEmpty()) {
             TreeNode temp = q.poll();
-            if (temp.getLeft() != null && temp.getRight() != null) {
-                q.add(temp.getLeft());
-                q.add(temp.getRight());
+            if (temp.left != null && temp.right != null) {
+                q.add(temp.left);
+                q.add(temp.right);
             } else {
                 return temp;
             }

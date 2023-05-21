@@ -34,22 +34,22 @@ public class Largestvalueineachlevelofbinarytree {
         if (root == null)
             return;
         if (level == res.size()) {
-            res.add(root.getData());
+            res.add(root.data);
         } else {
-            res.set(level, Math.max(res.get(level), root.getData()));
+            res.set(level, Math.max(res.get(level), root.data));
 //            res.set(d, Math.max(res.get(d), root.val));
         }
-        helpers(res, root.getLeft(), level + 1);
-        helpers(res, root.getRight(), level + 1);
+        helpers(res, root.left, level + 1);
+        helpers(res, root.right, level + 1);
     }
 
     private void print(TreeNode root) {
         if (root == null) {
             return;
         }
-        print(root.getLeft());
-        System.out.print(root.getData() + " ");
-        print(root.getRight());
+        print(root.left);
+        System.out.print(root.data + " ");
+        print(root.right);
     }
 
     private void insert(int data) {
@@ -58,10 +58,10 @@ public class Largestvalueineachlevelofbinarytree {
             return;
         }
         TreeNode lastInsertedNode = lastInsertedNode();
-        if (lastInsertedNode.getLeft() == null) {
-            lastInsertedNode.setLeft(new TreeNode(data));
+        if (lastInsertedNode.left == null) {
+            lastInsertedNode.left = (new TreeNode(data));
         } else {
-            lastInsertedNode.setRight(new TreeNode(data));
+            lastInsertedNode.right = (new TreeNode(data));
         }
     }
 
@@ -70,9 +70,9 @@ public class Largestvalueineachlevelofbinarytree {
         q.add(root);
         while (!q.isEmpty()) {
             TreeNode temp = q.poll();
-            if (temp.getLeft() != null && temp.getRight() != null) {
-                q.add(temp.getLeft());
-                q.add(temp.getRight());
+            if (temp.left != null && temp.right != null) {
+                q.add(temp.left);
+                q.add(temp.right);
             } else {
                 return temp;
             }

@@ -23,29 +23,29 @@ public class CheckforBST {
     }
 
     private boolean isBST(TreeNode root) {
-        if (root==null || (root.getLeft()==null&&root.getRight()==null)){
+        if (root==null || (root.left==null&&root.right==null)){
             return true;
         }
-        int p = root.getData();
+        int p = root.data;
         int l = 0;
         int r = 0;
-        if(root.getLeft()!=null){
-            l = root.getLeft().getData();
+        if(root.left!=null){
+            l = root.left.data;
         }
-        if(root.getRight()!=null){
-            r = root.getRight().getData();
+        if(root.right!=null){
+            r = root.right.data;
         }
         if(l!=0 && r!=0){
-            if(l<=p && r>=p && isBST(root.getLeft())&&isBST(root.getRight())){
+            if(l<=p && r>=p && isBST(root.left)&&isBST(root.right)){
                 return true;
             }
         }else if (l!=0){
-            if(l<=p && isBST(root.getLeft())&&isBST(root.getRight())){
+            if(l<=p && isBST(root.left)&&isBST(root.right)){
                 return true;
             }
         }
         else if (r!=0){
-            if(r>=p && isBST(root.getLeft())&&isBST(root.getRight())){
+            if(r>=p && isBST(root.left)&&isBST(root.right)){
                 return true;
             }
         }
@@ -57,9 +57,9 @@ public class CheckforBST {
         if (root==null){
             return;
         }
-        print(root.getLeft());
-        System.out.print(root.getData()+" ");
-        print(root.getRight());
+        print(root.left);
+        System.out.print(root.data+" ");
+        print(root.right);
     }
 
     private void insert(int data) {
@@ -68,10 +68,10 @@ public class CheckforBST {
             return;
         }
         TreeNode lastInsertedNode = lastInsertedNode();
-        if (lastInsertedNode.getLeft()==null){
-            lastInsertedNode.setLeft(new TreeNode(data));
+        if (lastInsertedNode.left==null){
+            lastInsertedNode.left = (new TreeNode(data));
         }else{
-            lastInsertedNode.setRight(new TreeNode(data));
+            lastInsertedNode.right = (new TreeNode(data));
         }
     }
 
@@ -80,9 +80,9 @@ public class CheckforBST {
         q.add(root);
         while (!q.isEmpty()){
             TreeNode temp = q.poll();
-            if(temp.getLeft()!=null&&temp.getRight()!=null){
-                q.add(temp.getLeft());
-                q.add(temp.getRight());
+            if(temp.left!=null&&temp.right!=null){
+                q.add(temp.left);
+                q.add(temp.right);
             }else{
                 return temp;
             }

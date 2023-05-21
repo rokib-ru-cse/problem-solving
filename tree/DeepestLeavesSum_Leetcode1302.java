@@ -19,17 +19,17 @@ public class DeepestLeavesSum_Leetcode1302 {
             return 0;
         }
         if (depth==level){
-            sum = sum + root.getData();
+            sum = sum + root.data;
             return sum;
         }
-        return sumofdepth(root.getLeft(),depth,level+1,sum)+sumofdepth(root.getRight(),depth,level+1,sum);
+        return sumofdepth(root.left,depth,level+1,sum)+sumofdepth(root.right,depth,level+1,sum);
     }
 
     private int depth(TreeNode root) {
         if (root==null){
             return 0;
         }
-        return Math.max(depth(root.getLeft()),depth(root.getRight()))+1;
+        return Math.max(depth(root.left),depth(root.right))+1;
     }
 
     public static void main(String[] args) {
@@ -45,9 +45,9 @@ public class DeepestLeavesSum_Leetcode1302 {
         if (root == null) {
             return;
         }
-        print(root.getLeft());
-        System.out.print(root.getData() + " ");
-        print(root.getRight());
+        print(root.left);
+        System.out.print(root.data + " ");
+        print(root.right);
     }
 
     private void insert(int data) {
@@ -56,10 +56,10 @@ public class DeepestLeavesSum_Leetcode1302 {
             return;
         }
         TreeNode lastInsertedNode = lastInsertedNode();
-        if (lastInsertedNode.getLeft() == null) {
-            lastInsertedNode.setLeft(new TreeNode(data));
+        if (lastInsertedNode.left == null) {
+            lastInsertedNode.left = new TreeNode(data);
         } else {
-            lastInsertedNode.setRight(new TreeNode(data));
+            lastInsertedNode.right = new TreeNode(data);
         }
     }
 
@@ -68,9 +68,9 @@ public class DeepestLeavesSum_Leetcode1302 {
         q.add(root);
         while (!q.isEmpty()) {
             TreeNode temp = q.poll();
-            if (temp.getLeft() != null && temp.getRight() != null) {
-                q.add(temp.getLeft());
-                q.add(temp.getRight());
+            if (temp.left != null && temp.right != null) {
+                q.add(temp.left);
+                q.add(temp.right);
             } else {
                 return temp;
             }

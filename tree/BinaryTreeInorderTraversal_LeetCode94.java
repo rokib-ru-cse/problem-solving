@@ -33,11 +33,11 @@ public class BinaryTreeInorderTraversal_LeetCode94 {
 
             while (curr!=null){
                 stack.add(curr);
-                curr = curr.getLeft();
+                curr = curr.left;
             }
             curr  =stack.pop();
-            res.add(curr.getData());
-            curr = curr.getRight();
+            res.add(curr.data);
+            curr = curr.right;
         }
         return res;
     }
@@ -45,9 +45,9 @@ public class BinaryTreeInorderTraversal_LeetCode94 {
         if (root==null){
             return;
         }
-        print(root.getLeft());
-        System.out.print(root.getData()+" ");
-        print(root.getRight());
+        print(root.left);
+        System.out.print(root.data+" ");
+        print(root.right);
     }
 
     private void insert(int data) {
@@ -56,10 +56,10 @@ public class BinaryTreeInorderTraversal_LeetCode94 {
             return;
         }
         TreeNode lastInsertedNode = lastInsertedNode();
-        if (lastInsertedNode.getLeft()==null){
-            lastInsertedNode.setLeft(new TreeNode(data));
+        if (lastInsertedNode.left==null){
+            lastInsertedNode.left = (new TreeNode(data));
         }else{
-            lastInsertedNode.setRight(new TreeNode(data));
+            lastInsertedNode.right = (new TreeNode(data));
         }
     }
 
@@ -68,9 +68,9 @@ public class BinaryTreeInorderTraversal_LeetCode94 {
         q.add(root);
         while (!q.isEmpty()){
             TreeNode temp = q.poll();
-            if(temp.getLeft()!=null&&temp.getRight()!=null){
-                q.add(temp.getLeft());
-                q.add(temp.getRight());
+            if(temp.left!=null&&temp.right!=null){
+                q.add(temp.left);
+                q.add(temp.right);
             }else{
                 return temp;
             }

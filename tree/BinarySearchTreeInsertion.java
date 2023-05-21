@@ -23,10 +23,10 @@ public class BinarySearchTreeInsertion {
         if (root == null) {
             return new TreeNode(data);
         }
-        if (data < root.getData()) {
-            root.setLeft(insertRec(root.getLeft(), data));
+        if (data < root.data) {
+            root.left = (insertRec(root.left, data));
         } else {
-            root.setRight(insertRec(root.getRight(), data));
+            root.right = (insertRec(root.right, data));
         }
         return root;
     }
@@ -44,9 +44,9 @@ public class BinarySearchTreeInsertion {
         if (root == null) {
             return;
         }
-        print(root.getLeft());
-        System.out.print(root.getData() + " ");
-        print(root.getRight());
+        print(root.left);
+        System.out.print(root.data + " ");
+        print(root.right);
     }
 
 
@@ -55,9 +55,9 @@ public class BinarySearchTreeInsertion {
         q.add(root);
         while (!q.isEmpty()) {
             TreeNode temp = q.poll();
-            if (temp.getLeft() != null && temp.getRight() != null) {
-                q.add(temp.getLeft());
-                q.add(temp.getRight());
+            if (temp.left != null && temp.right != null) {
+                q.add(temp.left);
+                q.add(temp.right);
             } else {
                 return temp;
             }

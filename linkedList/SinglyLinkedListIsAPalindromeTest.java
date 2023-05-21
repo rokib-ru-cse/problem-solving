@@ -10,7 +10,7 @@ public class SinglyLinkedListIsAPalindromeTest {
         SinglyLinkNode newList = null;
         SinglyLinkNode temp = root;
         while (temp!=null){
-            SinglyLinkNode tempNode = new SinglyLinkNode(temp.getData());
+            SinglyLinkNode tempNode = new SinglyLinkNode(temp.data);
             tempNode.setNext(newList);
             newList = tempNode;
             temp = temp.getNext();
@@ -18,7 +18,7 @@ public class SinglyLinkedListIsAPalindromeTest {
        SinglyLinkNode temp1 = newList;
        SinglyLinkNode temp2 = root;
         while (temp1 != null && temp2!=null) {
-            if (temp1.getData()!=temp2.getData()){
+            if (temp1.data!=temp2.data){
                 return false;
             }
             temp1 = temp1.getNext();
@@ -31,9 +31,9 @@ public class SinglyLinkedListIsAPalindromeTest {
         SinglyLinkNode temp = head;
         while (temp != null) {
             if (temp.getNext() == null) {
-                System.out.print(temp.getData());
+                System.out.print(temp.data);
             } else {
-                System.out.print(temp.getData() + "->");
+                System.out.print(temp.data + "->");
             }
             temp = temp.getNext();
         }

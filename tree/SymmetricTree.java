@@ -30,8 +30,8 @@ public class SymmetricTree {
             return true;
         }
         if (root != null && root1 != null
-                && root.getData() == root1.getData()) {
-            return (isSymmetricRec(root.getLeft(), root1.getRight()) && isSymmetricRec(root.getRight(), root1.getLeft()));
+                && root.data == root1.data) {
+            return (isSymmetricRec(root.left, root1.right) && isSymmetricRec(root.right, root1.left));
         }
         return false;
     }
@@ -40,9 +40,9 @@ public class SymmetricTree {
         if (root == null) {
             return;
         }
-        print(root.getLeft());
-        System.out.print(root.getData() + " ");
-        print(root.getRight());
+        print(root.left);
+        System.out.print(root.data + " ");
+        print(root.right);
     }
 
     private void insert(int data) {
@@ -51,10 +51,10 @@ public class SymmetricTree {
             return;
         }
         TreeNode lastInsertedNode = lastInsertedNode();
-        if (lastInsertedNode.getLeft() == null) {
-            lastInsertedNode.setLeft(new TreeNode(data));
+        if (lastInsertedNode.left == null) {
+            lastInsertedNode.left = new TreeNode(data);
         } else {
-            lastInsertedNode.setRight(new TreeNode(data));
+            lastInsertedNode.left  = new TreeNode(data);
         }
     }
 
@@ -63,9 +63,9 @@ public class SymmetricTree {
         q.add(root);
         while (!q.isEmpty()) {
             TreeNode temp = q.poll();
-            if (temp.getLeft() != null && temp.getRight() != null) {
-                q.add(temp.getLeft());
-                q.add(temp.getRight());
+            if (temp.left != null && temp.right != null) {
+                q.add(temp.left);
+                q.add(temp.right);
             } else {
                 return temp;
             }

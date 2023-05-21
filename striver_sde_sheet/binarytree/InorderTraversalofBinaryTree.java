@@ -30,11 +30,11 @@ public class InorderTraversalofBinaryTree {
         while (!stack.isEmpty() || currentNode != null) {
            if (currentNode!=null){
                stack.add(currentNode);
-               currentNode = currentNode.getLeft();
+               currentNode = currentNode.left;
            }else{
                TreeNode node = stack.pop();
-               System.out.print(node.getData()+" ");
-               currentNode = node.getRight();
+               System.out.print(node.data+" ");
+               currentNode = node.right;
            }
         }
     }
@@ -45,11 +45,11 @@ public class InorderTraversalofBinaryTree {
 //        while (!stack.empty() || curr != null) {
 //            if (curr != null) {
 //                stack.push(curr);
-//                curr = curr.getLeft();
+//                curr = curr.left;
 //            } else {
 //                curr = stack.pop();
-//                System.out.print(curr.getData() + " ");
-//                curr = curr.getRight();
+//                System.out.print(curr.data + " ");
+//                curr = curr.right;
 //            }
 //        }
 //    }
@@ -60,11 +60,11 @@ public class InorderTraversalofBinaryTree {
 
             while (current != null) {
                 stack.add(current);
-                current = current.getLeft();
+                current = current.left;
             }
             TreeNode node = stack.pop();
-            System.out.print(node.getData() + " ");
-            current = node.getRight();
+            System.out.print(node.data + " ");
+            current = node.right;
         }
     }
 
@@ -72,9 +72,9 @@ public class InorderTraversalofBinaryTree {
         if (root == null) {
             return;
         }
-        print(root.getLeft());
-        System.out.print(root.getData() + " ");
-        print(root.getRight());
+        print(root.left);
+        System.out.print(root.data + " ");
+        print(root.right);
     }
 
     private void insert(int data) {
@@ -83,10 +83,10 @@ public class InorderTraversalofBinaryTree {
             return;
         }
         TreeNode lastInsertedNode = lastInsertedNode();
-        if (lastInsertedNode.getLeft() == null) {
-            lastInsertedNode.setLeft(new TreeNode(data));
+        if (lastInsertedNode.left == null) {
+            lastInsertedNode.left = (new TreeNode(data));
         } else {
-            lastInsertedNode.setRight(new TreeNode(data));
+            lastInsertedNode.right = (new TreeNode(data));
         }
     }
 
@@ -95,9 +95,9 @@ public class InorderTraversalofBinaryTree {
         q.add(root);
         while (!q.isEmpty()) {
             TreeNode temp = q.poll();
-            if (temp.getLeft() != null && temp.getRight() != null) {
-                q.add(temp.getLeft());
-                q.add(temp.getRight());
+            if (temp.left != null && temp.right != null) {
+                q.add(temp.left);
+                q.add(temp.right);
             } else {
                 return temp;
             }

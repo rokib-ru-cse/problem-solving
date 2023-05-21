@@ -22,9 +22,9 @@ public class RangeSumofBST_LeetCode938 {
         if (root == null) {
             return;
         }
-        print(root.getLeft());
-        System.out.print(root.getData() + " ");
-        print(root.getRight());
+        print(root.left);
+        System.out.print(root.data + " ");
+        print(root.right);
     }
 
     private void insert(int data) {
@@ -33,10 +33,10 @@ public class RangeSumofBST_LeetCode938 {
             return;
         }
         TreeNode lastInsertedNode = lastInsertedNode();
-        if (lastInsertedNode.getLeft() == null) {
-            lastInsertedNode.setLeft(new TreeNode(data));
+        if (lastInsertedNode.left == null) {
+            lastInsertedNode.left = new TreeNode(data);
         } else {
-            lastInsertedNode.setRight(new TreeNode(data));
+            lastInsertedNode.right = new TreeNode(data);
         }
     }
 
@@ -45,9 +45,9 @@ public class RangeSumofBST_LeetCode938 {
         q.add(root);
         while (!q.isEmpty()) {
             TreeNode temp = q.poll();
-            if (temp.getLeft() != null && temp.getRight() != null) {
-                q.add(temp.getLeft());
-                q.add(temp.getRight());
+            if (temp.left != null && temp.right != null) {
+                q.add(temp.left);
+                q.add(temp.right);
             } else {
                 return temp;
             }
@@ -60,14 +60,14 @@ public class RangeSumofBST_LeetCode938 {
 //            return 0;
 //        }
 //        int sum = 0;
-//        if (root.getData() >= low && root.getData() <= high) {
-//            sum += root.getData();
+//        if (root.data >= low && root.data <= high) {
+//            sum += root.data;
 //        }
-//        if (root.getData() >= low) {
-//            sum += rangeSumBST(root.getLeft(), low, high);
+//        if (root.data >= low) {
+//            sum += rangeSumBST(root.left, low, high);
 //        }
-//        if (root.getData() <= high) {
-//            sum += rangeSumBST(root.getRight(), low, high);
+//        if (root.data <= high) {
+//            sum += rangeSumBST(root.right, low, high);
 //        }
 //        return sum;
 //    }
@@ -79,14 +79,14 @@ public int rangeSumBST(TreeNode root, int low, int high) {
         if (root == null) {
             return sum;
         }
-        if (root.getData() >= low && root.getData() <= high) {
-            sum += root.getData();
+        if (root.data >= low && root.data <= high) {
+            sum += root.data;
         }
-        if (root.getData() >= low) {
-            sum = sumRec(root.getLeft(), low, high, sum);
+        if (root.data >= low) {
+            sum = sumRec(root.left, low, high, sum);
         }
-        if (root.getData() <= high) {
-            sum = sumRec(root.getRight(), low, high, sum);
+        if (root.data <= high) {
+            sum = sumRec(root.right, low, high, sum);
         }
         return sum;
     }

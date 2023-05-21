@@ -19,9 +19,9 @@ public class DeleteANodeFromLinkedListTest {
         SinglyLinkNode temp = head;
         while (temp != null) {
             if (temp.getNext() == null) {
-                System.out.print(temp.getData());
+                System.out.print(temp.data);
             } else {
-                System.out.print(temp.getData() + "->");
+                System.out.print(temp.data + "->");
             }
             temp = temp.getNext();
         }

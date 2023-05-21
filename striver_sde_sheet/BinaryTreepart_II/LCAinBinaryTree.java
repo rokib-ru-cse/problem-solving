@@ -17,16 +17,16 @@ public class LCAinBinaryTree {
         tree.insert(110);
         tree.insert(11);
 
-        System.out.println(tree.LCA(tree.root, 110, 11).getData());
+        System.out.println(tree.LCA(tree.root, 110, 11).data);
     }
 
     private TreeNode LCA(TreeNode root, int node1, int node2) {
-        if (root == null || root.getData() == node1 || root.getData() == node2) {
+        if (root == null || root.data == node1 || root.data == node2) {
             return root;
         }
 
-        TreeNode left = LCA(root.getLeft(),node1,node2);
-        TreeNode right = LCA(root.getRight(),node1,node2);
+        TreeNode left = LCA(root.left,node1,node2);
+        TreeNode right = LCA(root.right,node1,node2);
         if (left==null){
             return right;
         } else if (right==null) {
@@ -37,11 +37,11 @@ public class LCAinBinaryTree {
     }
 
 //    private TreeNode LCA(TreeNode root, int node1, int node2) {
-//        if (root == null || root.getData() == node1 || root.getData() == node2) {
+//        if (root == null || root.data == node1 || root.data == node2) {
 //            return root;
 //        }
-//        TreeNode left = LCA(root.getLeft(), node1, node2);
-//        TreeNode right = LCA(root.getRight(), node1, node2);
+//        TreeNode left = LCA(root.left, node1, node2);
+//        TreeNode right = LCA(root.right, node1, node2);
 //        if (left == null) {
 //            return right;
 //        } else if (right == null) {
@@ -55,12 +55,12 @@ public class LCAinBinaryTree {
         if (node == null) {
             return parent;
         }
-        if (node.getData() == node1) {
+        if (node.data == node1) {
             parent.add(node);
             return parent;
         }
-        parent = parentNodes(node.getLeft(), node1, parent);
-        parent = parentNodes(node.getRight(), node1, parent);
+        parent = parentNodes(node.left, node1, parent);
+        parent = parentNodes(node.right, node1, parent);
         return parent;
     }
 
@@ -68,9 +68,9 @@ public class LCAinBinaryTree {
         if (root == null) {
             return;
         }
-        print(root.getLeft());
-        System.out.print(root.getData() + " ");
-        print(root.getRight());
+        print(root.left);
+        System.out.print(root.data + " ");
+        print(root.right);
     }
 
     private void insert(int data) {
@@ -79,10 +79,10 @@ public class LCAinBinaryTree {
             return;
         }
         TreeNode lastInsertedNode = lastInsertedNode();
-        if (lastInsertedNode.getLeft() == null) {
-            lastInsertedNode.setLeft(new TreeNode(data));
+        if (lastInsertedNode.left == null) {
+            lastInsertedNode.left = (new TreeNode(data));
         } else {
-            lastInsertedNode.setRight(new TreeNode(data));
+            lastInsertedNode.right = (new TreeNode(data));
         }
     }
 
@@ -91,9 +91,9 @@ public class LCAinBinaryTree {
         q.add(root);
         while (!q.isEmpty()) {
             TreeNode temp = q.poll();
-            if (temp.getLeft() != null && temp.getRight() != null) {
-                q.add(temp.getLeft());
-                q.add(temp.getRight());
+            if (temp.left != null && temp.right != null) {
+                q.add(temp.left);
+                q.add(temp.right);
             } else {
                 return temp;
             }

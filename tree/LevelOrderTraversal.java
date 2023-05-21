@@ -18,12 +18,12 @@ public class LevelOrderTraversal {
         queue.add(root);
         while (!queue.isEmpty()) {
             TreeNode current = queue.poll();
-            System.out.print(current.getData() + " ");
-            if (current.getLeft() != null) {
-                queue.add(current.getLeft());
+            System.out.print(current.data + " ");
+            if (current.left != null) {
+                queue.add(current.left);
             }
-            if (current.getRight() != null) {
-                queue.add(current.getRight());
+            if (current.right != null) {
+                queue.add(current.right);
             }
         }
     }
@@ -41,9 +41,9 @@ public class LevelOrderTraversal {
         if (root == null) {
             return;
         }
-        print(root.getLeft());
-        System.out.print(root.getData() + " ");
-        print(root.getRight());
+        print(root.left);
+        System.out.print(root.data + " ");
+        print(root.right);
     }
 
     private void insert(int data) {
@@ -52,10 +52,10 @@ public class LevelOrderTraversal {
             return;
         }
         DataStructuresAndAlgorithmsInJava.TreeNode lastInsertedNode = lastInsertedNode();
-        if (lastInsertedNode.getLeft() == null) {
-            lastInsertedNode.setLeft(new DataStructuresAndAlgorithmsInJava.TreeNode(data));
+        if (lastInsertedNode.left == null) {
+            lastInsertedNode.left = (new DataStructuresAndAlgorithmsInJava.TreeNode(data));
         } else {
-            lastInsertedNode.setRight(new DataStructuresAndAlgorithmsInJava.TreeNode(data));
+            lastInsertedNode.right = (new DataStructuresAndAlgorithmsInJava.TreeNode(data));
         }
     }
 
@@ -64,9 +64,9 @@ public class LevelOrderTraversal {
         q.add(root);
         while (!q.isEmpty()) {
             TreeNode temp = q.poll();
-            if (temp.getLeft() != null && temp.getRight() != null) {
-                q.add(temp.getLeft());
-                q.add(temp.getRight());
+            if (temp.left != null && temp.right != null) {
+                q.add(temp.left);
+                q.add(temp.right);
             } else {
                 return temp;
             }

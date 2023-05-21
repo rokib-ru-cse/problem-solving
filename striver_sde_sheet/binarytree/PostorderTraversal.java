@@ -29,15 +29,15 @@ public class PostorderTraversal {
         while (!stack.isEmpty() || currentNode != null) {
             if (currentNode != null) {
                 stack.add(currentNode);
-                currentNode = currentNode.getLeft();
+                currentNode = currentNode.left;
             } else {
-                TreeNode node = stack.peek().getRight();
+                TreeNode node = stack.peek().right;
                 if (node == null) {
                     node = stack.pop();
-                    System.out.print(node.getData() + " ");
-                    while (!stack.isEmpty() && node == stack.peek().getRight()) {
+                    System.out.print(node.data + " ");
+                    while (!stack.isEmpty() && node == stack.peek().right) {
                         node = stack.pop();
-                        System.out.print(node.getData() + " ");
+                        System.out.print(node.data + " ");
                     }
                 } else {
                     currentNode = node;
@@ -50,9 +50,9 @@ public class PostorderTraversal {
         if (root == null) {
             return;
         }
-        print(root.getLeft());
-        print(root.getRight());
-        System.out.print(root.getData() + " ");
+        print(root.left);
+        print(root.right);
+        System.out.print(root.data + " ");
     }
 
     private void insert(int data) {
@@ -61,10 +61,10 @@ public class PostorderTraversal {
             return;
         }
         TreeNode lastInsertedNode = lastInsertedNode();
-        if (lastInsertedNode.getLeft() == null) {
-            lastInsertedNode.setLeft(new TreeNode(data));
+        if (lastInsertedNode.left == null) {
+            lastInsertedNode.left = (new TreeNode(data));
         } else {
-            lastInsertedNode.setRight(new TreeNode(data));
+            lastInsertedNode.right = (new TreeNode(data));
         }
     }
 
@@ -73,9 +73,9 @@ public class PostorderTraversal {
         q.add(root);
         while (!q.isEmpty()) {
             TreeNode temp = q.poll();
-            if (temp.getLeft() != null && temp.getRight() != null) {
-                q.add(temp.getLeft());
-                q.add(temp.getRight());
+            if (temp.left != null && temp.right != null) {
+                q.add(temp.left);
+                q.add(temp.right);
             } else {
                 return temp;
             }

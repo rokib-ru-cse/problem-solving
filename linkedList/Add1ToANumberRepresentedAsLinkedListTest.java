@@ -32,7 +32,7 @@ public class Add1ToANumberRepresentedAsLinkedListTest {
             return 1;
         }
 
-        int carry = (int)node.getData() + backTrack(node.getNext(),(int)node.getData());
+        int carry = (int)node.data + backTrack(node.getNext(),(int)node.data);
         if(carry>9){
             node.setData(carry%10);
         }else {
@@ -45,9 +45,9 @@ public class Add1ToANumberRepresentedAsLinkedListTest {
         SinglyLinkNode temp = head;
         while (temp != null) {
             if (temp.getNext() == null) {
-                System.out.print(temp.getData());
+                System.out.print(temp.data);
             } else {
-                System.out.print(temp.getData() + "->");
+                System.out.print(temp.data + "->");
             }
             temp = temp.getNext();
         }

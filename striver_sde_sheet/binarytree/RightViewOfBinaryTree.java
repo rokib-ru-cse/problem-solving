@@ -23,7 +23,7 @@ public class RightViewOfBinaryTree {
         tree.insert(11);
         tree.rightViewOfBinaryTree(tree.root, 0, tree.queue);
         for (TreeNode node : tree.queue) {
-            System.out.print(node.getData() + " ");
+            System.out.print(node.data + " ");
         }
     }
 
@@ -34,17 +34,17 @@ public class RightViewOfBinaryTree {
         if (level == queue.size()) {
             queue.add(root);
         }
-        rightViewOfBinaryTree(root.getLeft(), level + 1, queue);
-        rightViewOfBinaryTree(root.getRight(), level + 1, queue);
+        rightViewOfBinaryTree(root.left, level + 1, queue);
+        rightViewOfBinaryTree(root.right, level + 1, queue);
     }
 
     private void print(TreeNode root) {
         if (root == null) {
             return;
         }
-        print(root.getLeft());
-        System.out.print(root.getData() + " ");
-        print(root.getRight());
+        print(root.left);
+        System.out.print(root.data + " ");
+        print(root.right);
     }
 
     private void insert(int data) {
@@ -53,10 +53,10 @@ public class RightViewOfBinaryTree {
             return;
         }
         TreeNode lastInsertedNode = lastInsertedNode();
-        if (lastInsertedNode.getLeft() == null) {
-            lastInsertedNode.setLeft(new TreeNode(data));
+        if (lastInsertedNode.left == null) {
+            lastInsertedNode.left = (new TreeNode(data));
         } else {
-            lastInsertedNode.setRight(new TreeNode(data));
+            lastInsertedNode.right = (new TreeNode(data));
         }
     }
 
@@ -65,9 +65,9 @@ public class RightViewOfBinaryTree {
         q.add(root);
         while (!q.isEmpty()) {
             TreeNode temp = q.poll();
-            if (temp.getLeft() != null && temp.getRight() != null) {
-                q.add(temp.getLeft());
-                q.add(temp.getRight());
+            if (temp.left != null && temp.right != null) {
+                q.add(temp.left);
+                q.add(temp.right);
             } else {
                 return temp;
             }

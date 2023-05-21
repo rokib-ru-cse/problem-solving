@@ -19,7 +19,7 @@ public class Add1ToANumberRepresentedAsLinkedListTest {
     }
 
     private void addExtraOne() {
-        int extra =  backTrack(head, 0);
+        int extra =  backTrack(head);
         if(extra>0){
             SinglyLinkNode newNode = new SinglyLinkNode<>(extra);
             newNode.setNext(head);
@@ -27,12 +27,12 @@ public class Add1ToANumberRepresentedAsLinkedListTest {
         }
     }
 
-    private int backTrack(SinglyLinkNode node, int extra) {
+    private int backTrack(SinglyLinkNode node) {
         if (node == null) {
             return 1;
         }
 
-        int carry = (int)node.data + backTrack(node.getNext(),(int)node.data);
+        int carry = (int)node.data + backTrack(node.getNext());
         if(carry>9){
             node.setData(carry%10);
         }else {

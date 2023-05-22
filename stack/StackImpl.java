@@ -2,6 +2,7 @@ package stack;
 
 import linkedList.ListNode;
 
+import java.util.NoSuchElementException;
 import java.util.Stack;
 
 public class StackImpl {

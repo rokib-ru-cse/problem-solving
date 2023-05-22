@@ -25,15 +25,15 @@ public class DeleteMiddleOfLinkedList {
     public static void main(String[] args) {
 
         Node one = new Node(1);
-        Node two = new Node(2);
-        Node three = new Node(3);
-        Node four = new Node(4);
-        Node five = new Node(5);
+        //Node two = new Node(2);
+        //Node three = new Node(3);
+//        Node four = new Node(4);
+//        Node five = new Node(5);
 
-        one.next = two;
-        two.next = three;
-        three.next = four;
-        four.next = five;
+        //one.next = two;
+        //two.next = three;
+//        three.next = four;
+//        four.next = five;
 
        Node n = deleteMiddleOfLinkedList(one) ;
        while (n!=null){

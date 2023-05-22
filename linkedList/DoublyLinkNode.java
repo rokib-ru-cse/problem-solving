@@ -1,9 +1,9 @@
 package linkedList;
 
 public class DoublyLinkNode<T> {
-   public T data;
-    DoublyLinkNode next;
-    DoublyLinkNode previous;
+    public T data;
+    public DoublyLinkNode next;
+    public DoublyLinkNode previous;
 
     public T data() {
         return data;
@@ -29,8 +29,10 @@ public class DoublyLinkNode<T> {
         this.previous = previous;
     }
 
-    DoublyLinkNode(){}
-   public DoublyLinkNode(T data){
+    DoublyLinkNode() {
+    }
+
+    public DoublyLinkNode(T data) {
         this.data = data;
         next = null;
         previous = null;

@@ -40,7 +40,7 @@ public class TwoTreesAreIdenticalOrNot {
 
 
         root2.left = firstNode;
-        root2.right = thirdNode;
+        root2.right = secondNode;
 //
 //        firstNode.left = thirdNode;
 //        firstNode.right = fourthNode;

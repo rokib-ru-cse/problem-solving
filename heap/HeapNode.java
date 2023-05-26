@@ -1,4 +1,4 @@
-package tree;
+package heap;
 
 public class HeapNode {
     int data;

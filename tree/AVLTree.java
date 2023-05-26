@@ -1,28 +1,22 @@
 package tree;
 
-import tree.TreeNode;
 
+public class AVLTree {
 
-public class SelfBalancingTreeTest {
     TreeNode root;
 
 
     public static void main(String[] args) {
-        SelfBalancingTreeTest tree = new SelfBalancingTreeTest();
+        AVLTree tree = new AVLTree();
         tree.root = tree.insert(tree.root, 10);
+        tree.root = tree.insert(tree.root, 1);
+        tree.root = tree.insert(tree.root, 1);
         tree.root = tree.insert(tree.root, 11);
-        tree.root = tree.insert(tree.root, 13);
-        tree.root = tree.insert(tree.root, 2);
-        tree.root = tree.insert(tree.root, 31);
-        tree.root = tree.insert(tree.root, 4);
-        tree.root = tree.insert(tree.root, 55);
-        tree.root = tree.insert(tree.root, 33);
-        tree.root = tree.insert(tree.root, 3);
-        tree.root = tree.insert(tree.root, 1);
-        tree.root = tree.insert(tree.root, 1);
         tree.root = tree.insert(tree.root, 12);
-        tree.root = tree.insert(tree.root, 43);
-        tree.root = tree.insert(tree.root, 54);
+        tree.root = tree.insert(tree.root, 13);
+        tree.root = tree.insert(tree.root, 15);
+        tree.root = tree.insert(tree.root, 21);
+        tree.root = tree.insert(tree.root, 33);
         tree.print(tree.root);
     }
 
@@ -37,19 +31,32 @@ public class SelfBalancingTreeTest {
 
     private TreeNode insert(TreeNode root, int data) {
         if (root == null) {
-            root = new TreeNode(data);
-            return root;
+            return new TreeNode(data);
         }
         if (data < root.data) {
             root.left = insert(root.left, data);
-        } else if (data > root.data) {
-            root.right = insert(root.right, data);
         } else {
-            return root;
+            root.right = insert(root.right, data);
         }
-
-        root.height = 1 + Math.max(height(root.left), height(root.right));
+        root.height = height(root);
         int balance = getBalance(root);
+        if (balance > 1 && data < root.left.data) {
+            return rightRotation(root);
+        }
+        if (balance < -1 && data > root.right.data) {
+            return leftRotation(root);
+        }
+        if (balance > 1 && data > root.left.data) {
+            root.left = leftRotation(root.left);
+            return rightRotation(root);
+        }
+        if (balance < -1 && data < root.right.data) {
+            root.right = rightRotation(root.right);
+            return leftRotation(root);
+        }
+        return root;
+        /*
+        * int balance = getBalance(root);
 
         if (balance > 1 && data < root.left.data) {
             return rightRotation(root);
@@ -66,33 +73,35 @@ public class SelfBalancingTreeTest {
             return leftRotation(root);
         }
         return root;
+        * */
+
     }
 
     private TreeNode leftRotation(TreeNode root) {
-        TreeNode temp1 = root.right;
-        TreeNode temp2 = root.left;
+        TreeNode leftNode = root.left;
+        TreeNode rightNode = root.right;
 
-        temp1.left = root;
-        root.right = temp2;
+        rightNode.left = root;
+        root.right = leftNode;
 
         root.height = Math.max(height(root.left), height(root.right)) + 1;
-        temp1.height = Math.max(height(temp1.left), height(temp1.right)) + 1;
-
-        return temp1;
+        rightNode.height = Math.max(height(rightNode.left), height(rightNode.right)) + 1;
+        return rightNode;
     }
 
     private TreeNode rightRotation(TreeNode root) {
-        TreeNode temp1 = root.left;
-        TreeNode temp2 = root.right;
+        TreeNode leftNode = root.left;
+        TreeNode rightNode = root.right;
 
-        temp1.right = root;
-        root.left = temp2;
+        leftNode.right = root;
+        root.left = rightNode;
 
         root.height = Math.max(height(root.left), height(root.right)) + 1;
-        temp1.height = Math.max(height(temp1.left), height(temp1.right)) + 1;
+        leftNode.height = Math.max(height(leftNode.left), height(leftNode.right)) + 1;
 
-        return temp1;
+        return leftNode;
     }
+
 
     private int getBalance(TreeNode root) {
         if (root == null) {
@@ -105,8 +114,6 @@ public class SelfBalancingTreeTest {
         if (node == null) {
             return 0;
         }
-        return node.height;
+        return root.height;
     }
-
-
 }

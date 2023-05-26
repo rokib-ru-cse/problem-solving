@@ -1,8 +1,5 @@
 package tree;
 
-import tree.MaxHeapTest;
-import tree.TreeNode;
-
 import java.util.LinkedList;
 import java.util.Queue;
 

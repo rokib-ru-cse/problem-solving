@@ -1,30 +1,31 @@
-package tree;
+package heap;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class MaxHeapTest {
     HeapNode root;
-/*
-*Fields:
 
-heap: an array that represents the underlying binary tree structure of the max-heap
-size: the number of elements currently in the max-heap
-Methods:
+    /*
+    *Fields:
 
-insert(value): inserts a new element with the given value into the max-heap while maintaining the max-heap property
-peek(): returns the maximum element in the max-heap without removing it
-extract_max(): removes and returns the maximum element in the max-heap while maintaining the max-heap property
-heapify(arr): creates a max-heap from the given array by repeatedly calling the insert method on each element in the array
-build_heap(arr): builds a max-heap from the given array using a bottom-up approach, which has a time complexity of O(n) compared to O(n log n) for heapify
-remove(value): removes the element with the given value from the max-heap while maintaining the max-heap property
-is_empty(): returns a boolean indicating whether the max-heap is empty or not
-clear(): removes all elements from the max-heap
-I hope this helps! Let me know if you have any further questions.
-*
-*
-*
-* */
+    heap: an array that represents the underlying binary tree structure of the max-heap
+    size: the number of elements currently in the max-heap
+    Methods:
+
+    insert(value): inserts a new element with the given value into the max-heap while maintaining the max-heap property
+    peek(): returns the maximum element in the max-heap without removing it
+    extract_max(): removes and returns the maximum element in the max-heap while maintaining the max-heap property
+    heapify(arr): creates a max-heap from the given array by repeatedly calling the insert method on each element in the array
+    build_heap(arr): builds a max-heap from the given array using a bottom-up approach, which has a time complexity of O(n) compared to O(n log n) for heapify
+    remove(value): removes the element with the given value from the max-heap while maintaining the max-heap property
+    is_empty(): returns a boolean indicating whether the max-heap is empty or not
+    clear(): removes all elements from the max-heap
+    I hope this helps! Let me know if you have any further questions.
+    *
+    *
+    *
+    * */
     public static void main(String[] args) {
         MaxHeapTest maxHeap = new MaxHeapTest();
         maxHeap.add(40);
@@ -36,7 +37,22 @@ I hope this helps! Let me know if you have any further questions.
         maxHeap.add(45);
         maxHeap.print(maxHeap.root);
         int max = maxHeap.extractMax();
-        System.out.println("max "+max);
+        System.out.println("max " + max);
+        max = maxHeap.extractMax();
+        System.out.println("max " + max);
+        max = maxHeap.extractMax();
+        System.out.println("max " + max);
+        max = maxHeap.extractMax();
+        System.out.println("max " + max);
+        max = maxHeap.extractMax();
+        System.out.println("max " + max);
+        max = maxHeap.extractMax();
+        System.out.println("max " + max);
+        max = maxHeap.extractMax();
+        System.out.println("max " + max);
+        max = maxHeap.extractMax();
+        System.out.println("max " + max);
+
         maxHeap.print(maxHeap.root);
     }
 
@@ -101,7 +117,7 @@ I hope this helps! Let me know if you have any further questions.
             return 0;
         }
         int returnData = root.data;
-        HeapNode lastInsertedNode = lastParent(root);
+        HeapNode lastInsertedNode = lastInsertedNode(root);
         if (root == lastInsertedNode) {
             root = null;
             return returnData;
@@ -117,12 +133,30 @@ I hope this helps! Let me know if you have any further questions.
         return returnData;
     }
 
+    private HeapNode lastInsertedNode(HeapNode root) {
+        Queue<HeapNode> allNodes = new LinkedList<>();
+        allNodes.add(root);
+        while (!allNodes.isEmpty()) {
+            HeapNode tempNode = allNodes.poll();
+            if (tempNode.left != null) {
+                allNodes.add(tempNode.left);
+            }
+            if (tempNode.right != null) {
+                allNodes.add(tempNode.right);
+            }
+            if (tempNode.left == null && tempNode.right == null) {
+                return tempNode;
+            }
+        }
+        return null;
+    }
+
     private void downHeapify(HeapNode root) {
         HeapNode largest = root;
         if (root.left != null && root.left.data > largest.data) {
             largest = root.left;
         }
-         if (root.right != null && root.right.data > largest.data) {
+        if (root.right != null && root.right.data > largest.data) {
             largest = root.right;
         }
         if (largest != root) {

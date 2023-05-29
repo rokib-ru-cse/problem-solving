@@ -2,3 +2,6 @@
 *.out
 .idea
 .vscode
+out
+/out
+out/*

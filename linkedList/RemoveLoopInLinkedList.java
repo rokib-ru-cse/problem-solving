@@ -3,7 +3,7 @@ package linkedList;
 public class RemoveLoopInLinkedList {
 
     static Node removeLoopInLinkedList(Node root) {
-
+//return root;
         Node slow = root;
         Node fast = root;
 
@@ -22,13 +22,13 @@ public class RemoveLoopInLinkedList {
     public static void main(String[] args) {
         Node one = new Node(1);
         Node two = new Node(2);
-        Node three = new Node(4);
-        Node four = new Node(6);
+        Node three = new Node(3);
+        Node four = new Node(4);
 
         one.next = two;
         two.next = three;
         three.next = four;
-        four.next = two;
+        four.next = three;
         Node n = removeLoopInLinkedList(one);
         while (n != null) {
             if (n.next == null) {

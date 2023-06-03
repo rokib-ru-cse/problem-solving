@@ -1,22 +1,39 @@
 package linkedList;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Spliterator;
+import java.util.function.Consumer;
+
 public class RemoveLoopInLinkedList {
 
     static Node removeLoopInLinkedList(Node root) {
-//return root;
+        //return root;
+
         Node slow = root;
         Node fast = root;
 
-        while(fast!=null && fast.next!=null){
-            slow=slow.next;
-            fast=fast.next.next;
-            if(slow==fast){
-                slow.next = null;
-                break;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                return slow;
             }
         }
 
         return root;
+    }
+
+    static void removeLoop(Node root) {
+        Node meet = removeLoopInLinkedList(root);
+        Node head = root;
+        while (true) {
+            while (meet.next != meet ) {
+
+            }
+        }
+
     }
 
     public static void main(String[] args) {
@@ -38,6 +55,7 @@ public class RemoveLoopInLinkedList {
             }
             n = n.next;
         }
-        System.out.println();
+        // System.out.println('j'+'a'+'v'+'a');
     }
+
 }

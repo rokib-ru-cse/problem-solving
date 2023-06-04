@@ -29,9 +29,15 @@ public class RemoveLoopInLinkedList {
         Node meet = removeLoopInLinkedList(root);
         Node head = root;
         while (true) {
-            while (meet.next != meet ) {
-
+            Node temp = meet;
+            while (temp.next != meet && temp.next != head) {
+                temp = temp.next;
             }
+            if (temp.next == head) {
+                temp.next = null;
+                return;
+            }
+            head = head.next;
         }
 
     }
@@ -46,7 +52,8 @@ public class RemoveLoopInLinkedList {
         two.next = three;
         three.next = four;
         four.next = three;
-        Node n = removeLoopInLinkedList(one);
+        removeLoop(one);
+        Node n = one;
         while (n != null) {
             if (n.next == null) {
                 System.out.print(n.value);

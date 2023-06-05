@@ -1,16 +1,16 @@
 package heap;
 
 public class HeapNode {
-    int data;
-    HeapNode left;
-    HeapNode right;
-    HeapNode parent;
+    public int data;
+    public HeapNode left;
+    public HeapNode right;
+    public HeapNode parent;
 
-    HeapNode() {
+    public HeapNode() {
 
     }
 
-    HeapNode(int data) {
+    public HeapNode(int data) {
         this.data = data;
         left = null;
         right = null;

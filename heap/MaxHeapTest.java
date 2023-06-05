@@ -136,19 +136,20 @@ public class MaxHeapTest {
     private HeapNode lastInsertedNode(HeapNode root) {
         Queue<HeapNode> allNodes = new LinkedList<>();
         allNodes.add(root);
+        HeapNode tempNode = null;
         while (!allNodes.isEmpty()) {
-            HeapNode tempNode = allNodes.poll();
+            tempNode = allNodes.poll();
             if (tempNode.left != null) {
                 allNodes.add(tempNode.left);
             }
             if (tempNode.right != null) {
                 allNodes.add(tempNode.right);
             }
-            if (tempNode.left == null && tempNode.right == null) {
-                return tempNode;
-            }
+//            if (tempNode.left == null && tempNode.right == null) {
+//                return tempNode;
+//            }
         }
-        return null;
+        return tempNode;
     }
 
     private void downHeapify(HeapNode root) {

@@ -38,7 +38,7 @@ public class AVLTree {
         } else {
             root.right = insert(root.right, data);
         }
-        root.height = height(root);
+        root.height = Math.max(height(root.left), height(root.right)) + 1;
         int balance = getBalance(root);
         if (balance > 1 && data < root.left.data) {
             return rightRotation(root);

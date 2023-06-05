@@ -9,11 +9,27 @@ public class MinHeap1 {
 
 
     public static void main(String[] args) {
-        MinHeap1 minHeap = new MinHeap1();
-        minHeap.insert(10);
+        MinHeap1 tree = new MinHeap1();
+        tree.add(40);
+        tree.add(10);
+        tree.add(20);
+        tree.add(30);
+        tree.add(25);
+        tree.add(35);
+        tree.add(45);
+        tree.print(tree.root);
     }
 
-    private void insert(int data) {
+    private void print(HeapNodeTest root) {
+        if (root == null) {
+            return;
+        }
+        print(root.left);
+        System.out.print(root.data + " ");
+        print(root.right);
+    }
+
+    private void add(int data) {
         if (root == null) {
             root = new HeapNodeTest(data);
             return;
@@ -30,10 +46,10 @@ public class MinHeap1 {
     }
 
     private void upHeapify(HeapNodeTest newNode) {
-        if (newNode.parent==null){
+        if (newNode.parent == null) {
             return;
         }
-        if (newNode.parent.data>newNode.data){
+        if (newNode.parent.data > newNode.data) {
 
         }
     }

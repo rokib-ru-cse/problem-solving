@@ -42,10 +42,10 @@ public class AVLTreeTest {
         int balance = balance(root);
 
         if (balance > 1 && data < root.left.data) {
-            return rightRotation(root);
+            return rightRotation(root.left);
         }
         if (balance < -1 && data > root.right.data) {
-            return leftRotation(root);
+            return leftRotation(root.right);
         }
         if (balance > 1 && data > root.left.data) {
             root.left = leftRotation(root.left);

@@ -6,9 +6,10 @@ import java.util.regex.Pattern;
 public class Regex {
 
     public static void main(String[] args) {
-        Pattern pattern = Pattern.compile("x");
-        Matcher matcher = pattern.matcher("x");
+        Pattern pattern = Pattern.compile("\\+\\d\\s\\d{3}\\s\\d{3}\\s\\d{3}");
+        Matcher matcher = pattern.matcher("+1 232 435 434");
         boolean m = matcher.matches();
         System.out.println(m);
+
     }
 }

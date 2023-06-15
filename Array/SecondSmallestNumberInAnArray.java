@@ -34,10 +34,26 @@ public class SecondSmallestNumberInAnArray {
         }
 
         return min2;
+    }public static int secondLargestNumberInAnArraySecondWay(int[] arr) {
+
+        int min1 = Integer.MIN_VALUE;
+        int min2 = Integer.MIN_VALUE;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] > min1) {
+                min1 = arr[i];
+            }
+            if(arr[i]>min2 && arr[i]<min1){
+                min2 = arr[i];
+            }
+        }
+
+        return min2;
     }
 
     public static void main(String[] args) {
-        System.out.println(secondSmallestNumberInAnArray(new int[] { 1, 3, 7, 12, 9, 123, 44, 55 }));
+        //System.out.println(secondSmallestNumberInAnArray(new int[] { 1, 3, 7, 12, 9, 123, 44, 55 }));
         System.out.println(secondSmallestNumberInAnArraySecondWay(new int[] { 1, 3, 7, 12, 9, 123, 44, 55 }));
+        System.out.println(secondSmallestNumberInAnArraySecondWay(new int[] { 3,4,6,7,8,1}));
     }
 }

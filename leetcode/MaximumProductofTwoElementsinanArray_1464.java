@@ -1,10 +1,8 @@
-package interview;
+package leetcode;
 
-public class SecondMAX {
+public class MaximumProductofTwoElementsinanArray_1464 {
 
-
-    public static int secondMAX(int[] arr) {
-
+    public int maxProduct(int[] arr) {
         int firstMax = -1;
         int secondMax = -1;
         for (int i = 0; i < arr.length; i++) {
@@ -12,14 +10,14 @@ public class SecondMAX {
                 secondMax = firstMax;
                 firstMax = arr[i];
             }
-            if (arr[i] > secondMax) {
+           else if (arr[i] > secondMax) {
                 secondMax = arr[i];
             }
         }
-        return secondMax;
+        return (secondMax-1)*(firstMax-1);
     }
 
     public static void main(String[] args) {
-        System.out.println(secondMAX(new int[]{1, 4, 2, 5, 7, 9, 12, 11}));
+
     }
 }

@@ -1,7 +1,7 @@
 package designpattern.prototypepattern;
 
 
-public class Doctor implements Profession {
+public class Doctor extends Profession {
     @Override
     public void print() {
         System.out.println("i am doctor");

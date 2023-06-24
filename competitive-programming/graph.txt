@@ -1,0 +1,108 @@
+Graph Representation : 
+    (1) = Adjacency Matrix directed/undirected Graph
+    (2) = Adjacency Matrix directed/undirected weighted Graph
+    (3) = Adjacency List directed/undirected Graph
+    (4) = Adjacency List directed/undirected weighted Graph
+
+Graph Traversal : 
+    (1) = BFS in Adjacency Matrix iterative method
+    (2) = BFS in Adjacency Matrix recursive method
+    (3) = BFS in Adjacency List iterative method
+    (4) = BFS in Adjacency List recursive method
+    (5) = DFS in Adjacency Matrix iterative method
+    (6) = DFS in Adjacency Matrix recursive method
+    (7) = DFS in Adjacency List iterative method
+    (8) = DFS in Adjacency List recursive method
+
+BFS:
+    (1) BFS = non-weighted graph shortest path
+    (2) Dijastra = weighted graph single source shortest path
+    (3) bellman ford =  weighted graph multiple source shortest path
+
+
+7 7
+1 2
+1 3
+2 4
+2 5
+2 6
+2 7
+7 3
+
+0 1 1 0 0 0 0 
+1 0 0 1 1 1 1 
+1 0 0 0 0 0 1 
+0 1 0 0 0 0 0 
+0 1 0 0 0 0 0 
+0 1 0 0 0 0 0 
+0 1 1 0 0 0 0
+
+7 7
+1 2
+1 3
+2 4
+2 5
+2 6
+2 7
+7 3
+
+2 3 
+1 4 5 6 7 
+1 7 
+2 
+2 
+2 
+2 3
+
+7 7
+1 2 1
+1 3 2
+2 4 3
+2 5 4
+2 6 5
+2 7 2
+7 3 4
+
+
+12 11
+1 2
+1 3
+1 4
+2 5
+2 6
+4 7
+4 8
+5 9
+5 10
+7 11
+7 12
+
+connected component:
+8 5
+1 2
+2 3
+2 4
+3 5
+6 7
+
+4 1
+1 2
+
+
+edges weighted tree:
+7 6
+1 2 4
+1 3 6
+2 4 1
+2 5 1
+3 6 3
+3 7 0
+
+nodes weighted tree:
+4 3
+1 2
+1 4
+4 3
+10 5 12 6
+
+

@@ -4,54 +4,72 @@ public class Add1ToANumberRepresentedAsLinkedListTest {
 
     SinglyLinkNode head;
 
-    public static void main(String[] args) {
-        Add1ToANumberRepresentedAsLinkedListTest list = new Add1ToANumberRepresentedAsLinkedListTest();
-        list.add(9);
-        list.add(9);
-        list.add(9);
-        list.add(9);
-        list.print();
-        list.addExtraOne(list.head);
-        list.print();
-
-    }
-
-    private void addExtraOne(SinglyLinkNode<Integer> head) {
-//        int extra =  backTrack(head);
-//        if(extra>0){
-//            SinglyLinkNode newNode = new SinglyLinkNode<>(extra);
-//            newNode.setNext(head);
-//            head = newNode;
-//        }
-        if (head == null) {
-            return;
+    public static SinglyLinkNode addExtraOne1(SinglyLinkNode<Integer> head) {
+        SinglyLinkNode<Integer> temp = new SinglyLinkNode(0);
+        temp.next = head;
+        SinglyLinkNode<Integer> current = head;
+        SinglyLinkNode<Integer> lastNonNineNode = temp;
+        while (current != null) {
+            if (current.data != 9) {
+                lastNonNineNode = current;
+            }
+            current = current.next;
         }
-        addExtraOne(head.next);
-        Integer extra = 1;
-        if (head.data + extra > 9) {
-            extra = 1;
-            head.data = 0;
+        lastNonNineNode.data++;
+        current = lastNonNineNode.next;
+        while (current != null) {
+            current.data = 0;
+            current = current.next;
+        }
+        if (temp.data == 0) {
+            return temp.next;
         } else {
-            head.data = head.data + 1;
-            extra = 0;
+            return temp;
         }
     }
 
-//    private int backTrack(SinglyLinkNode node) {
-//        if (node == null) {
-//            return 1;
-//        }
-//
-//        int carry = (int)node.data + backTrack(node.getNext());
-//        if(carry>9){
-//            node.setData(carry%10);
-//        }else {
-//            node.setData(carry);
-//        }
-//        return carry/10;
-//    }
+    public static SinglyLinkNode addExtraOne2(SinglyLinkNode<Integer> head) {
+        int carry = addExtraOneHelper(head);
+        if (carry > 0) {
+            SinglyLinkNode newNode = new SinglyLinkNode(carry);
+            newNode.next = head;
+            return newNode;
+        }
+        return head;
+    }
 
-    private void print() {
+    private static int addExtraOneHelper(SinglyLinkNode<Integer> head) {
+        if (head == null) {
+            return 1;
+        }
+        int carry = addExtraOneHelper(head.next);
+        int sum = carry + head.data;
+        head.data = sum % 10;
+        return sum / 10;
+    }
+
+
+    public static SinglyLinkNode addExtraOne3(SinglyLinkNode<Integer> head) {
+        
+        return head;
+    }
+
+    public static void main(String[] args) {
+        SinglyLinkNode<Integer> head1 = SinglyLinkedList.getSinglyLinkedList();
+        print(head1);
+        head1 = addExtraOne1(head1);
+        print(head1);
+
+        SinglyLinkNode<Integer> head2 = SinglyLinkedList.getSinglyLinkedList();
+        print(head2);
+        head2 = addExtraOne2(head2);
+        print(head2);
+
+
+    }
+
+
+    private static void print(SinglyLinkNode head) {
         SinglyLinkNode temp = head;
         while (temp != null) {
             if (temp.getNext() == null) {

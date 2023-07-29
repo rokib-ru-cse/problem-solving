@@ -10,6 +10,9 @@ public class SinglyLinkedList<T> {
         private T data;
         private Node<T> next;
 
+        public Node() {
+        }
+
         public Node(T data) {
             this.data = data;
             this.next = null;
@@ -77,5 +80,14 @@ public class SinglyLinkedList<T> {
             current = current.next;
         }
         System.out.println();
+    }
+
+    public static SinglyLinkNode<Integer> getSinglyLinkedList() {
+        SinglyLinkNode<Integer> head = new SinglyLinkNode<>(9);
+        head.next = new SinglyLinkNode<>(9);
+        head.next.next = new SinglyLinkNode<>(5);
+        head.next.next.next = new SinglyLinkNode<>(9);
+        head.next.next.next.next = new SinglyLinkNode<>(9);
+        return head;
     }
 }

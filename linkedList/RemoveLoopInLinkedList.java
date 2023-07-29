@@ -25,22 +25,21 @@ public class RemoveLoopInLinkedList {
         return root;
     }
 
-    static void removeLoop(Node root) {
-        Node meet = removeLoopInLinkedList(root);
-        Node head = root;
-        while (true) {
-            Node temp = meet;
-            while (temp.next != meet && temp.next != head) {
-                temp = temp.next;
-            }
-            if (temp.next == head) {
-                temp.next = null;
-                return;
-            }
-            head = head.next;
-        }
-
-    }
+//    static void removeLoop(Node root) {
+//        Node meet = removeLoopInLinkedList(root);
+//        Node head = root;
+//        while (true) {
+//            Node temp = meet;
+//            while (temp.next != meet && temp.next != head) {
+//                temp = temp.next;
+//            }
+//            if (temp.next == head) {
+//                temp.next = null;
+//                return;
+//            }
+//            head = head.next;
+//        }
+//    }
 
     public static void main(String[] args) {
         Node one = new Node(1);
@@ -51,7 +50,7 @@ public class RemoveLoopInLinkedList {
         one.next = two;
         two.next = three;
         three.next = four;
-        four.next = three;
+        four.next = one;
         removeLoop(one);
         Node n = one;
         while (n != null) {
@@ -64,5 +63,22 @@ public class RemoveLoopInLinkedList {
         }
         // System.out.println('j'+'a'+'v'+'a');
     }
+
+    public static void removeLoop(Node head) {
+        Node meet = removeLoopInLinkedList(head);
+        Node tempHead = head;
+        while (true) {
+            Node temp = meet;
+            while (temp.next != meet && temp.next != tempHead) {
+                temp = temp.next;
+            }
+            if (temp.next == tempHead) {
+                temp.next = null;
+                return;
+            }
+            tempHead = tempHead.next;
+        }
+    }
+
 
 }

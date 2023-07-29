@@ -121,4 +121,16 @@ public class DoublyLinkedList<T> {
         list1.printList();
         list1.printListReverse();
     }
+
+    public static DoublyLinkedList<Integer> getDoublyLinkedList(){
+        DoublyLinkedList<Integer> head = new DoublyLinkedList<>();
+        head.addLast(10);
+        head.addLast(12);
+        head.addLast(13);
+        head.addLast(14);
+        head.addLast(111);
+        head.addLast(9);
+        return head;
+    }
+
 }

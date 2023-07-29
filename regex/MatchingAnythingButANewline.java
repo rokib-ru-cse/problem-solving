@@ -7,7 +7,7 @@ public class MatchingAnythingButANewline {
 
     public static void main(String[] args) {
         Pattern pattern = Pattern.compile("([^\\n]{3})[.]([^\\n]{3})[.]([^\\n]{3})[.]([^\\n]{3})");
-        Matcher matcher = pattern.matcher("abc.def.ghi.jkx");
+        Matcher matcher = pattern.matcher("1123.456.abc.def"); // false
         boolean m = matcher.matches();
         System.out.println(m);
     }

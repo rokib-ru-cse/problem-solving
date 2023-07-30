@@ -8,20 +8,11 @@ public class MergeTwoSortedLinkedLists {
     }
 
     static Node mergeLists(Node head1, Node head2) {
-        Node newList = null;
+
         if (head1 == null && head2 == null) {
             return null;
         }
-        if (head1 != null && head2 != null) {
-            if (head1.value < head2.value) {
-                newList = new Node(head1.value);
-                head1 = head1.next;
-            } else {
-                newList = new Node(head2.value);
-                head2 = head2.next;
-            }
-        }
-
+        Node newList = new Node(-1);
         while (head1 != null && head2 != null) {
             if (head1.value < head2.value) {
                 newList.next = new Node(head1.value);
@@ -37,7 +28,7 @@ public class MergeTwoSortedLinkedLists {
         if (head2 != null) {
             newList.next = head2;
         }
-        return newList;
+        return newList.next;
     }
 
     Node insert(Node head, int data) {

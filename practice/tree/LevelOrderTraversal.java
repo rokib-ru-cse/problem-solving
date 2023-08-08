@@ -5,37 +5,22 @@ import tree.TreeNode;
 import java.util.LinkedList;
 import java.util.Queue;
 
+public class LevelOrderTraversal {
 
-public class BSTLCA {
+
     TreeNode root;
-    int size = 0;
 
     public static void main(String[] args) {
-        BSTLCA tree = new BSTLCA();
+        LevelOrderTraversal tree = new LevelOrderTraversal();
         tree.insert(100);
         tree.insert(2);
         tree.insert(10);
         tree.insert(110);
-        //tree.print(tree.root);
-
-        System.out.println(lca(tree.root, 2, 10).data);
+        tree.levelOrderPrint(tree.root);
     }
 
-    public static TreeNode lca(TreeNode root, int data1, int data2) {
+    private void levelOrderPrint(TreeNode root) {
 
-        if (root == null || root.data == data1 || root.data == data2) {
-            return root;
-        }
-        TreeNode left = lca(root.left, data1, data2);
-        TreeNode right = lca(root.right, data1, data2);
-
-        if (left == null) {
-            return right;
-        } else if (right == null) {
-            return left;
-        } else {
-            return root;
-        }
     }
 
     private void print(TreeNode root) {
@@ -54,9 +39,9 @@ public class BSTLCA {
         }
         TreeNode lastInsertedNode = lastInsertedNode();
         if (lastInsertedNode.left == null) {
-            lastInsertedNode.left = new TreeNode(data);
+            lastInsertedNode.left = (new TreeNode(data));
         } else {
-            lastInsertedNode.right = new TreeNode(data);
+            lastInsertedNode.right = (new TreeNode(data));
         }
     }
 

@@ -1,3 +1,5 @@
+package others;
+
 public class Merging2Packages {
     
     public static int[] merging2Packages(int arr[]){

@@ -1,3 +1,5 @@
+package others;
+
 public class ReverseEachWordInGivenString {
 
     public String reverseEachWordInGivenStringUsingReverse(String s) {

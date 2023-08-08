@@ -1,3 +1,5 @@
+package others;
+
 public class RemoveSpecialCharacter {
     public String removeSpecialChar(String s){
         String sp = "!@#$%^&*()_+=-";

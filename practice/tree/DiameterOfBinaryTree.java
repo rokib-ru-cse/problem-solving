@@ -5,39 +5,40 @@ import tree.TreeNode;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class ChildrenSumParent {
+public class DiameterOfBinaryTree {
     TreeNode root;
     int size = 0;
 
-    public static void main(String[] args) {
-        ChildrenSumParent tree = new ChildrenSumParent();
-        tree.insert(100);
-        tree.insert(2);
-        tree.insert(98);
-        tree.insert(2);
-        //tree.print(tree.root);
-        System.out.println(isChildrenSumParent(tree.root));
+    public int diameterOfBinaryTree1(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int leftTreeHeight = heightOfBinaryTree(root.left);
+        int rightTreeHeight = heightOfBinaryTree(root.right);
+        int leftDiameter = diameterOfBinaryTree1(root.left);
+        int rightDiameter = diameterOfBinaryTree1(root.right);
+        return Math.max(leftTreeHeight + rightTreeHeight, Math.max(leftDiameter, rightDiameter));
     }
 
-    private static boolean isChildrenSumParent(TreeNode root) {
-        if (root==null || (root.left==null&&root.right==null)){
-            return true;
-        }
-        int left =0;
-        int right = 0;
-        if (root.left!=null){
-            left = root.left.data;
-        }
-        if (root.right!=null){
-            right = root.right.data;
-        }
-        if ((left+right)==root.data && isChildrenSumParent(root.left) && isChildrenSumParent(root.right)){
-            return true;
-        }else {
-            return false;
+    public int heightOfBinaryTree(TreeNode root) {
+        if (root == null) {
+            return 0;
         }
 
+        int leftHeight = heightOfBinaryTree(root.left);
+        int rightHeight = heightOfBinaryTree(root.right);
 
+        return Math.max(leftHeight, rightHeight) + 1;
+    }
+
+    public static void main(String[] args) {
+        DiameterOfBinaryTree tree = new DiameterOfBinaryTree();
+        tree.insert(100);
+        tree.insert(2);
+        tree.insert(10);
+        tree.insert(110);
+//        tree.print(tree.root);
+        System.out.println(tree.diameterOfBinaryTree1(tree.root));
     }
 
     private void print(TreeNode root) {

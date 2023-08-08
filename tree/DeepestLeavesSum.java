@@ -1,41 +1,46 @@
-package practice.tree;
-
-import tree.TreeNode;
+package tree;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class CheckForBST {
+
+public class DeepestLeavesSum {
     TreeNode root;
     int size = 0;
 
     public static void main(String[] args) {
-        CheckForBST tree = new CheckForBST();
+        DeepestLeavesSum tree = new DeepestLeavesSum();
         tree.insert(100);
-        //tree.insert(2);
-        //tree.insert(10);
-        //tree.insert(110);
-//        tree.print(tree.root);
-
-       tree.root.left = new TreeNode(50);
-       tree.root.right = new TreeNode(150);
-
-        tree.root.left.left = new TreeNode(30);
-        tree.root.left.right = new TreeNode(70);
-
-        System.out.println(isBST(tree.root, Integer.MIN_VALUE, Integer.MAX_VALUE));
+        tree.insert(2);
+        tree.insert(10);
+        tree.insert(110);
+        //tree.print(tree.root);
+        System.out.println(deepestSum(tree.root));
     }
 
-    private static boolean isBST(TreeNode root, int minValue, int maxValue) {
-        if (root == null) {
-            return true;
-        }
-        if (minValue <= root.data && maxValue >= root.data && isBST(root.left, minValue, root.data) && isBST(root.right, root.data, maxValue)) {
-            return true;
-        } else {
-            return false;
-        }
+    private static int deepestSum(TreeNode root) {
+        int height = height(root);
+        Integer sum=0;
+        return deepestSum(root, height, 0, sum);
+    }
 
+    private static int deepestSum(TreeNode root, int height, int level, int sum) {
+        if (root == null) {
+            return 0;
+        }
+        if (level == height) {
+            sum = sum + root.data;
+        }
+        sum += deepestSum(root.left, height, level + 1, sum);
+        sum += deepestSum(root.right, height, level + 1, sum);
+        return sum;
+    }
+
+    private static int height(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        return Math.max(height(root.left), height(root.right)) + 1;
     }
 
     private void print(TreeNode root) {

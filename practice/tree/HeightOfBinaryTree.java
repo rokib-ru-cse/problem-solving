@@ -5,44 +5,31 @@ import tree.TreeNode;
 import java.util.LinkedList;
 import java.util.Queue;
 
+public class HeightOfBinaryTree {
 
-public class DeepestLeavesSum {
+
     TreeNode root;
     int size = 0;
 
     public static void main(String[] args) {
-        DeepestLeavesSum tree = new DeepestLeavesSum();
+        HeightOfBinaryTree tree = new HeightOfBinaryTree();
         tree.insert(100);
         tree.insert(2);
         tree.insert(10);
         tree.insert(110);
-        //tree.print(tree.root);
-        System.out.println(deepestSum(tree.root));
+//        tree.print(tree.root);
+        System.out.println(tree.heightOfBinaryTree(tree.root));
     }
 
-    private static int deepestSum(TreeNode root) {
-        int height = height(root);
-        Integer sum=0;
-        return deepestSum(root, height, 0, sum);
-    }
-
-    private static int deepestSum(TreeNode root, int height, int level, int sum) {
+    public int heightOfBinaryTree(TreeNode root) {
         if (root == null) {
             return 0;
         }
-        if (level == height) {
-            sum = sum + root.data;
-        }
-        sum += deepestSum(root.left, height, level + 1, sum);
-        sum += deepestSum(root.right, height, level + 1, sum);
-        return sum;
-    }
 
-    private static int height(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
-        return Math.max(height(root.left), height(root.right)) + 1;
+        int leftHeight = heightOfBinaryTree(root.left);
+        int rightHeight = heightOfBinaryTree(root.right);
+
+        return Math.max(leftHeight, rightHeight) + 1;
     }
 
     private void print(TreeNode root) {

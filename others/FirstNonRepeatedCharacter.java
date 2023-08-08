@@ -1,3 +1,5 @@
+package others;
+
 public class FirstNonRepeatedCharacter {
 
     public String firstNonRepeatedCharacter(String s) {

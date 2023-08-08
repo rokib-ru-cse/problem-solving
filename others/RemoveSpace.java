@@ -1,7 +1,4 @@
-import java.text.Collator;
-import java.util.ArrayList;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+package others;
 
 public class RemoveSpace {
     

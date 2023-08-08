@@ -55,7 +55,7 @@ public class RangeSumofBST_LeetCode938 {
         return null;
     }
 
-//    public int rangeSumBST(TreeNode root, int low, int high) {
+    //    public int rangeSumBST(TreeNode root, int low, int high) {
 //        if (root == null) {
 //            return 0;
 //        }
@@ -71,9 +71,9 @@ public class RangeSumofBST_LeetCode938 {
 //        }
 //        return sum;
 //    }
-public int rangeSumBST(TreeNode root, int low, int high) {
-    return sumRec(root, low, high, 0);
-}
+    public int rangeSumBST(TreeNode root, int low, int high) {
+        return sumRec(root, low, high, 0);
+    }
 
     private int sumRec(TreeNode root, int low, int high, int sum) {
         if (root == null) {
@@ -90,9 +90,6 @@ public int rangeSumBST(TreeNode root, int low, int high) {
         }
         return sum;
     }
-
-
-
 
 
 }

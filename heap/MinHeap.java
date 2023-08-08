@@ -73,4 +73,10 @@ public class MinHeap {
         }
         return null;
     }
+
+    public static int extractMin() {
+        return 0;
+    }
+
+
 }

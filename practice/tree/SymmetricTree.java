@@ -5,50 +5,41 @@ import tree.TreeNode;
 import java.util.LinkedList;
 import java.util.Queue;
 
+public class SymmetricTree {
 
-public class CheckedForBalancedTree {
     TreeNode root;
-    int size = 0;
 
-    public static void main(String[] args) {
-        CheckedForBalancedTree tree = new CheckedForBalancedTree();
-        tree.insert(100);
-        tree.insert(2);
-        tree.insert(10);
-        tree.insert(110);
-        tree.root.left.left.left = new TreeNode(122);
-        //tree.print(tree.root);
-        System.out.println(isBalanced(tree.root));
-    }
-
-    private static boolean isBalanced(TreeNode root) {
+    private boolean isSymmetric1() {
         if (root == null) {
             return true;
         }
-        int left = height(root.left);
-        int right = height(root.right);
-        if (Math.abs(left - right) < 2 && isBalanced(root.left) && isBalanced(root.right)) {
+        return isSymmetric1(root.left,root.right);
+    }
+
+    private boolean isSymmetric1(TreeNode left, TreeNode right) {
+        if (left==null && right==null){
             return true;
-        } else {
+        }
+        if (left==null||right==null){
             return false;
         }
+        return (left.data==right.data)
+                && isSymmetric1(left.left,right.right)
+                && isSymmetric1(left.right,right.left);
     }
 
-    private static int height(TreeNode node) {
-        if (node == null) {
-            return 0;
-        }
-        return Math.max(height(node.left), height(node.right)) + 1;
+    public static void main(String[] args) {
+        SymmetricTree tree = new SymmetricTree();
+        tree.insert(100);
+        tree.insert(2);
+        tree.insert(2);
+        tree.insert(110);
+        tree.insert(4);
+        tree.insert(4);
+        tree.insert(110);
+        System.out.println(tree.isSymmetric1());
     }
 
-    private void print(TreeNode root) {
-        if (root == null) {
-            return;
-        }
-        print(root.left);
-        System.out.print(root.data + " ");
-        print(root.right);
-    }
 
     private void insert(int data) {
         if (root == null) {
@@ -78,4 +69,3 @@ public class CheckedForBalancedTree {
         return null;
     }
 }
-

@@ -1,3 +1,5 @@
+package others;
+
 public class ReverseString {
     public String reverse1(String s) {
         return new StringBuilder(s).reverse().toString();

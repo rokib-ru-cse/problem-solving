@@ -19,10 +19,7 @@ public class BST {
         if (min != null && min > node.data) {
             return false;
         }
-        if (isBST(node.left, min, node.data) && isBST(node.right, node.data, max)) {
-            return true;
-        }
-        return false;
+        return isBST(node.left, min, node.data) && isBST(node.right, node.data, max);
     }
 
     public static void main(String[] args) {
@@ -38,7 +35,7 @@ public class BST {
         tree.root.right.left = new TreeNode(11);
         tree.root.right.right = new TreeNode(13);
 
-        System.out.println(isBST(tree.root, null, null));
+        System.out.println(isBST(tree.root, Integer.MIN_VALUE, Integer.MAX_VALUE));
 
         /*
          *

@@ -77,8 +77,9 @@ public class LongestPalindromeInAString {
         return res;
     }
     public static void main(String[] args) {
-//        System.out.println(longestPalindromeInAString1("aaaabbaa"));
+        System.out.println(longestPalindromeInAString1("aaaabbaa"));
         System.out.println(longestPalindromeInAString2("aaaabbaa"));
+        System.out.println(longestPalindromeInAString3("aaaabbaa"));
 //        System.out.println(longestPalindromeInAString1("rfkqyuqfjkxy"));
 //        System.out.println(longestPalindromeInAString1("abcdefghijklmnopqrstuvwxyz"));
     }

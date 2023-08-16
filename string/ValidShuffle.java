@@ -12,24 +12,12 @@ public class ValidShuffle {
         Map<Character, Integer> map2 = new HashMap<>();
         for (int i = 0; i < result.length(); i++) {
             if (i < first.length()) {
-                if (map1.containsKey(first.charAt(i))) {
-                    map1.put(first.charAt(i), map1.get(first.charAt(i)) + 1);
-                } else {
-                    map1.put(first.charAt(i), 1);
-                }
+                map1.put(first.charAt(i), map1.getOrDefault(first.charAt(i),0) + 1);
             }
             if (i < second.length()) {
-                if (map1.containsKey(second.charAt(i))) {
-                    map1.put(second.charAt(i), map1.get(second.charAt(i)) + 1);
-                } else {
-                    map1.put(second.charAt(i), 1);
-                }
+                map1.put(second.charAt(i), map1.getOrDefault(second.charAt(i),0) + 1);
             }
-            if (map2.containsKey(result.charAt(i))) {
-                map2.put(result.charAt(i), map2.get(result.charAt(i)) + 1);
-            } else {
-                map2.put(result.charAt(i), 1);
-            }
+            map2.put(result.charAt(i), map2.getOrDefault(result.charAt(i),0) + 1);
         }
         return map1.equals(map2);
     }

@@ -1,4 +1,4 @@
-package NumberSystemConversion;
+package number_system_conversion;
 
 public class DecimalToOctal {
 

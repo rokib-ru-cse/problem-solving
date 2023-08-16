@@ -24,7 +24,7 @@ public class FindDuplicateCharactersInString {
         Map<Character,Integer> res = new HashMap<>();
         int[] chars = new int[26];
         for (char c:data.toCharArray()) {
-            chars[c-97]++;
+            chars[c-'a']++;
         }
         for (int i = 0; i < 26; i++) {
             if (chars[i]>1){

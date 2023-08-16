@@ -102,6 +102,7 @@ public class SinglyLinkedListIsAPalindromeTest {
         head.add(2);
         head.add(1);
         head.print();
+        System.out.println(isPalindrome1(head.head));
         System.out.println(singlyLinkedListIsAPalindrome(head.head));
         SinglyLinkNode head1 = SinglyLinkedList.getSinglyLinkedList();
         //System.out.println(isPalindrome1(head1));

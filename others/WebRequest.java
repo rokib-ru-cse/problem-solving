@@ -10,14 +10,14 @@ public class WebRequest {
 //       2 index = counter of 5 seconds
 //       3 index = counter of 30 seconds
         Map<String, List<Integer>> processed = new LinkedHashMap<>();
+
         int counter = 0;
-        // mission updation all XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        // mission updation all
         List<Map<String, String>> result = new ArrayList<>();
         for (String url : urls) {
             if (processed.containsKey(url)) {
                 List<Integer> allCounters = processed.get(url);
-                if (allCounters.get(2) <= 5
-                        && allCounters.get(0) <= 2 && allCounters.get(1) <= 5 && allCounters.get(3) < 30) {
+                if (allCounters.get(2) <= 5 && allCounters.get(0) <= 2 && allCounters.get(1) <= 5 && allCounters.get(3) < 30) {
                     allCounters.set(0, allCounters.get(0) + 1);
                     allCounters.set(1, allCounters.get(1) + 1);
                     allCounters.set(2, allCounters.get(2) + 1);

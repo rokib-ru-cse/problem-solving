@@ -22,6 +22,22 @@ public class RemoveDuplicateElementFromSortedLinkedList {
         return newRoot;
     }
 
+    static Node removeDuplicateElementFromSortedLinkedList1(Node node) {
+        if (node == null) {
+            return null;
+        }
+        Node newRoot = node;
+
+        while (node != null) {
+            if (node.next != null && node.value == node.next.value) {
+                node.next = node.next.next;
+            }
+            node = node.next;
+        }
+
+        return newRoot;
+    }
+
     public static void main(String[] args) {
         Node one = new Node(1);
         Node two = new Node(2);
@@ -39,6 +55,12 @@ public class RemoveDuplicateElementFromSortedLinkedList {
         five.next = five1;
 
         Node n = removeDuplicateElementFromSortedLinkedList(one);
+        while (n != null) {
+            System.out.print(n.value + "->");
+            n = n.next;
+        }
+        System.out.println();
+        n = removeDuplicateElementFromSortedLinkedList1(one);
         while (n != null) {
             System.out.print(n.value + "->");
             n = n.next;

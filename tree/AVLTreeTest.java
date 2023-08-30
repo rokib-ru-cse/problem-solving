@@ -60,8 +60,8 @@ public class AVLTreeTest {
     }
 
     private TreeNode leftRotation(TreeNode root) {
-        TreeNode leftNode = root.left;
         TreeNode rightNode = root.right;
+        TreeNode leftNode = rightNode.left;
 
         rightNode.left = root;
         root.right = leftNode;
@@ -74,7 +74,7 @@ public class AVLTreeTest {
 
     private TreeNode rightRotation(TreeNode root) {
         TreeNode leftNode = root.left;
-        TreeNode rightNode = root.right;
+        TreeNode rightNode = leftNode .right;
 
         leftNode.right = root;
         root.left = rightNode;

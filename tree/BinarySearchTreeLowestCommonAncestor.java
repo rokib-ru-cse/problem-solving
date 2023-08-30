@@ -45,19 +45,20 @@ public class BinarySearchTreeLowestCommonAncestor {
 
     public static TreeNode lca(TreeNode root, int v1, int v2) {
         // Write your code here.
-        if (root == null ||root.data==v1 || root.data==v2) {
+        if (root == null || root.data == v1 || root.data == v2) {
             return root;
         }
         TreeNode left = lca(root.left, v1, v2);
         TreeNode right = lca(root.right, v1, v2);
-        if (left==null){
+        if (left == null) {
             return right;
-        }else if (right==null){
+        } else if (right == null) {
             return left;
-        }else{
+        } else {
             return root;
         }
     }
+
     private void print(TreeNode root) {
         if (root == null) {
             return;

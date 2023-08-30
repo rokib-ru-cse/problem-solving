@@ -1,6 +1,7 @@
 package linkedList;
 
-public class ReverseALinkedListTest {
+public class
+ReverseALinkedListTest {
 
     Node head;
 

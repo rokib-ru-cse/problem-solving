@@ -23,12 +23,14 @@ public class PrintTheMiddleOfAGivenLinkedList {
         Node three = new Node(3);
         Node four = new Node(4);
         Node five = new Node(5);
+        Node six = new Node(6);
 
 
         one.next = two;
         two.next = three;
         three.next = four;
         four.next = five;
+        five.next = six;
 
         System.out.println(printTheMiddleOfAGivenLinkedList(one));
 
